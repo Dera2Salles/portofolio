@@ -5,7 +5,7 @@ const skills = [
   {
     name: "Gomu Gomu no React",
     type: "Paramecia",
-    desc: "Rubber-like flexibility for dynamic UIs.",
+    desc: "Flexibilité élastique pour des interfaces dynamiques.",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
     color: "bg-blue-100 dark:bg-blue-900/20",
     borderColor: "border-blue-400"
@@ -13,7 +13,7 @@ const skills = [
   {
     name: "Goro Goro no Flutter",
     type: "Logia",
-    desc: "Lightning fast cross-platform development.",
+    desc: "Développement multiplateforme à la vitesse de l'éclair.",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg",
     color: "bg-cyan-100 dark:bg-cyan-900/20",
      borderColor: "border-cyan-400"
@@ -21,7 +21,7 @@ const skills = [
   {
     name: "Tori Tori no NestJS",
     type: "Zoan",
-    desc: "Rising like a Phoenix with modular architecture.",
+    desc: "Renaître tel un Phénix avec une architecture modulaire.",
     icon: "https://nestjs.com/img/logo-small.svg",
     color: "bg-red-100 dark:bg-red-900/20",
      borderColor: "border-red-600"
@@ -29,7 +29,7 @@ const skills = [
   {
     name: "Mochi Mochi no Mongo",
     type: "Paramecia",
-    desc: "Versatile and shape-shifting document storage.",
+    desc: "Stockage de documents polyvalent et malléable.",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
     color: "bg-green-100 dark:bg-green-900/20",
     borderColor: "border-green-500"
@@ -37,7 +37,7 @@ const skills = [
    {
     name: "Ope Ope no SQL",
     type: "Paramecia",
-    desc: "Surgical precision with relational data (PostgreSQL).",
+    desc: "Précision chirurgicale avec les données relationnelles (PostgreSQL).",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
     color: "bg-indigo-100 dark:bg-indigo-900/20",
      borderColor: "border-indigo-500"
@@ -45,7 +45,7 @@ const skills = [
   {
     name: "Mera Mera no Laravel",
     type: "Logia",
-    desc: "Elegant syntax that fuels rapid development.",
+    desc: "Syntaxe élégante qui enflamme le développement rapide.",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg",
     color: "bg-red-100 dark:bg-red-900/20",
      borderColor: "border-red-500"
@@ -53,7 +53,7 @@ const skills = [
   {
     name: "Zou Zou no PHP",
     type: "Zoan",
-    desc: "The mammoth foundation of the web.",
+    desc: "La fondation mammouth du web.",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg",
     color: "bg-indigo-100 dark:bg-indigo-900/20",
      borderColor: "border-indigo-400"
@@ -61,7 +61,7 @@ const skills = [
   {
     name: "Pika Pika no Astro",
     type: "Logia",
-    desc: "Light-speed performance for content sites.",
+    desc: "Performance à la vitesse de la lumière pour les sites de contenu.",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/astro/astro-original.svg",
     color: "bg-orange-100 dark:bg-orange-900/20",
      borderColor: "border-orange-500"
@@ -69,7 +69,7 @@ const skills = [
   {
     name: "Shiro Shiro no Docker",
     type: "Paramecia",
-    desc: "Fortress-like containerization for apps.",
+    desc: "Conteneurisation forteresse pour vos applications.",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
     color: "bg-sky-100 dark:bg-sky-900/20",
      borderColor: "border-sky-500"
@@ -81,7 +81,7 @@ const DevilFruitSkills: React.FC = () => {
     <section id="skills" className="py-20 bg-op-dark dark:bg-[#0f0f1a] relative transition-colors duration-300">
       <div className="container mx-auto px-4 relative z-10">
         <h2 className="text-4xl md:text-5xl font-black text-center text-op-gold mb-16 uppercase drop-shadow-md font-serif tracking-widest">
-           Devil Fruit Arsenal
+           Arsenal de Fruits du Démon
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

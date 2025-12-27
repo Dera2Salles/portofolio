@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 
+import profilePic from './file.jpeg'
+
 interface TypewriterTextProps {
   text: string;
   delay?: number;
@@ -78,19 +80,19 @@ const Hero: React.FC = () => {
           className="text-center md:text-left"
         >
           <h2 className="text-2xl md:text-3xl font-bold mb-4 text-op-red dark:text-op-gold uppercase tracking-widest font-serif transition-colors">
-            <TypewriterText text="Level 99 Pirate Developer" />
+            <TypewriterText text="Développeur Pirate Niveau 99" />
           </h2>
           <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight text-gray-900 dark:text-white transition-colors">
-            I'M GONNA BE <br/>
+            JE SERAI LE <br/>
             <span className="text-op-red text-stroke-red relative inline-block">
-                KING OF THE WEB!
+                ROI DU CODING !
                 <svg className="absolute -bottom-2 left-0 w-full h-3 text-op-gold" viewBox="0 0 100 10" preserveAspectRatio="none">
                     <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="3" fill="none" />
                 </svg>
             </span>
           </h1>
           <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-8 max-w-lg mx-auto md:mx-0 font-medium">
-            Setting sail on the Grand Line of coding. Building legendary interfaces and conquering the backend seas.
+            Hissant les voiles sur la Grand Line du code. Création d'interfaces légendaires et conquête des mers du backend.
           </p>
           <motion.a 
             href="#projects"
@@ -98,7 +100,7 @@ const Hero: React.FC = () => {
             whileTap={{ scale: 0.95 }}
             className="inline-block bg-op-red text-white text-xl font-bold py-4 px-10 rounded-full shadow-[0_4px_14px_0_rgba(214,52,71,0.39)] border-2 border-transparent hover:border-op-gold transition-all cursor-pointer relative overflow-hidden group"
           >
-            <span className="relative z-10">VIEW BOUNTIES</span>
+            <span className="relative z-10">VOIR LES PRIMES</span>
             <div className="absolute inset-0 h-full w-full scale-0 rounded-full transition-all duration-300 group-hover:scale-100 group-hover:bg-red-700/50"></div>
           </motion.a>
         </motion.div>
@@ -121,15 +123,15 @@ const Hero: React.FC = () => {
             
             <div className="border-[3px] border-[#3e2723] h-64 md:h-80 w-full mb-4 bg-gray-800 overflow-hidden relative group">
                 <img 
-                    src="https://api.dicebear.com/7.x/avataaars/svg?seed=Luffy&top=shortHair&hat=none&clothing=graphicShirt&clothingColor=black&mouth=smile" 
+                    src={profilePic} 
                     alt="Profile" 
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
             </div>
             
             <div className="text-center space-y-2">
-                <h2 className="text-4xl font-black text-[#3e2723] uppercase font-serif tracking-tighter shadow-sm">DEAD OR ALIVE</h2>
-                <h3 className="text-2xl font-bold text-[#3e2723] font-serif">MONKEY D. DEV</h3>
+                <h2 className="text-4xl font-black text-[#3e2723] uppercase font-serif tracking-tighter shadow-sm">MORT OU VIF</h2>
+                <h3 className="text-xl md:text-2xl font-bold text-[#3e2723] font-serif leading-tight px-2">DERANDRAINY MARIE<br/><span className="text-lg">MARTINOT DE SALLES</span></h3>
                 
                 <div className="flex items-center justify-center space-x-2 mt-4">
                     <span className="text-2xl font-serif font-bold text-[#3e2723]">฿</span>

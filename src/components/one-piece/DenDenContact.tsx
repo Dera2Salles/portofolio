@@ -35,11 +35,15 @@ const DenDenContact: React.FC = () => {
                 </div>
 
                 <h2 className="text-3xl font-black uppercase mb-2 text-shadow-lg relative z-10 font-serif tracking-wider">
-                    Call The Captain!
+                    Appelez le Capitaine !
                 </h2>
-                <p className="text-sm opacity-90 relative z-10 max-w-xs leading-relaxed">
-                    Have a map to a hidden treasure (project)? Or just want to join the crew?
+                <p className="text-sm opacity-90 relative z-10 max-w-xs leading-relaxed mb-4">
+                    Vous avez une carte vers un trésor caché (projet) ? Ou vous voulez juste rejoindre l'équipage ?
                 </p>
+                <div className="relative z-10 bg-black/20 p-2 rounded backdrop-blur-sm border border-white/10">
+                    <p className="text-xs font-bold text-op-gold uppercase tracking-widest">Email du Capitaine</p>
+                    <p className="font-mono text-sm">dera.ah.14@gmail.com</p>
+                </div>
             </div>
 
             {/* Right Side - Form */}
@@ -50,21 +54,21 @@ const DenDenContact: React.FC = () => {
 
                 <form className="space-y-6 relative z-10">
                     <div className="relative group">
-                        <label className="block text-[#3e2723] font-black mb-1 uppercase text-xs tracking-widest pl-1">Pirate Name</label>
-                        <input type="text" className="w-full px-4 py-4 bg-white border-2 border-[#3e2723] rounded-sm focus:outline-none focus:ring-4 focus:ring-op-red/20 focus:border-op-red text-[#3e2723] font-bold shadow-[4px_4px_0_#3e2723] transition-all" placeholder="Monkey D. Luffy" />
+                        <label className="block text-[#3e2723] font-black mb-1 uppercase text-xs tracking-widest pl-1">Nom de Pirate</label>
+                        <input type="text" className="w-full px-4 py-4 bg-white border-2 border-[#3e2723] rounded-sm focus:outline-none focus:ring-4 focus:ring-op-red/20 focus:border-op-red text-[#3e2723] font-bold shadow-[4px_4px_0_#3e2723] transition-all" placeholder="Votre Nom..." />
                     </div>
                     <div className="relative group">
-                        <label className="block text-[#3e2723] font-black mb-1 uppercase text-xs tracking-widest pl-1">Frequency (Email)</label>
-                        <input type="email" className="w-full px-4 py-4 bg-white border-2 border-[#3e2723] rounded-sm focus:outline-none focus:ring-4 focus:ring-op-red/20 focus:border-op-red text-[#3e2723] font-bold shadow-[4px_4px_0_#3e2723] transition-all" placeholder="king@pirates.com" />
+                        <label className="block text-[#3e2723] font-black mb-1 uppercase text-xs tracking-widest pl-1">Fréquence (Email)</label>
+                        <input type="email" className="w-full px-4 py-4 bg-white border-2 border-[#3e2723] rounded-sm focus:outline-none focus:ring-4 focus:ring-op-red/20 focus:border-op-red text-[#3e2723] font-bold shadow-[4px_4px_0_#3e2723] transition-all" placeholder="votre_email@exemple.com" />
                     </div>
                     <div className="relative group">
-                        <label className="block text-[#3e2723] font-black mb-1 uppercase text-xs tracking-widest pl-1">Message Scroll</label>
-                        <textarea rows={4} className="w-full px-4 py-4 bg-white border-2 border-[#3e2723] rounded-sm focus:outline-none focus:ring-4 focus:ring-op-red/20 focus:border-op-red text-[#3e2723] font-bold shadow-[4px_4px_0_#3e2723] transition-all resize-none" placeholder="I found the One Piece..."></textarea>
+                        <label className="block text-[#3e2723] font-black mb-1 uppercase text-xs tracking-widest pl-1">Parchemin de Message</label>
+                        <textarea rows={4} className="w-full px-4 py-4 bg-white border-2 border-[#3e2723] rounded-sm focus:outline-none focus:ring-4 focus:ring-op-red/20 focus:border-op-red text-[#3e2723] font-bold shadow-[4px_4px_0_#3e2723] transition-all resize-none" placeholder="J'ai trouvé le One Piece..."></textarea>
                     </div>
                     
                     <button type="button" className="w-full bg-[#3e2723] text-op-gold font-black text-xl py-4 rounded-sm uppercase tracking-widest hover:bg-op-red hover:text-white transition-all duration-300 shadow-[6px_6px_0_#000] active:translate-y-1 active:shadow-[2px_2px_0_#000] flex items-center justify-center gap-3 group">
                         <Send className="w-6 h-6 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
-                        Send Message
+                        Envoyer le Message
                     </button>
                 </form>
             </div>

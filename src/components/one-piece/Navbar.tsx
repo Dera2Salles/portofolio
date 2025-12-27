@@ -15,9 +15,10 @@ const Navbar: React.FC = () => {
   }, [isDark]);
 
   const links = [
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
+    { name: 'À propos', href: '#about' },
+    { name: 'Services', href: '#services' },
+    { name: 'Compétences', href: '#skills' },
+    { name: 'Projets', href: '#projects' },
     { name: 'Contact', href: '#contact' },
   ];
 
