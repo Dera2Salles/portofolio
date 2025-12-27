@@ -2,6 +2,21 @@ import { Phone, Send } from 'lucide-react';
 import React from 'react';
 
 const DenDenContact: React.FC = () => {
+  const [formData, setFormData] = React.useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleSend = () => {
+    const { name, email, message } = formData;
+    const projectEmail = "dera.ah.14@gmail.com";
+    const subject = `Message de ${name || 'Pirate Anonyme'}`;
+    const body = `Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+    
+    window.location.href = `mailto:${projectEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
   return (
     <section id="contact" className="py-24 bg-op-dark dark:bg-black relative overflow-hidden transition-colors duration-300">
       <div className="container mx-auto px-4 relative z-10">
@@ -52,21 +67,42 @@ const DenDenContact: React.FC = () => {
                     <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg" className="w-24 h-24 rotate-12" alt="decoration"/>
                 </div>
 
-                <form className="space-y-6 relative z-10">
+                <form className="space-y-6 relative z-10" onSubmit={(e) => { e.preventDefault(); handleSend(); }}>
                     <div className="relative group">
                         <label className="block text-[#3e2723] font-black mb-1 uppercase text-xs tracking-widest pl-1">Nom de Pirate</label>
-                        <input type="text" className="w-full px-4 py-4 bg-white border-2 border-[#3e2723] rounded-sm focus:outline-none focus:ring-4 focus:ring-op-red/20 focus:border-op-red text-[#3e2723] font-bold shadow-[4px_4px_0_#3e2723] transition-all" placeholder="Votre Nom..." />
+                        <input 
+                          type="text" 
+                          value={formData.name}
+                          onChange={(e) => setFormData({...formData, name: e.target.value})}
+                          className="w-full px-4 py-4 bg-white border-2 border-[#3e2723] rounded-sm focus:outline-none focus:ring-4 focus:ring-op-red/20 focus:border-op-red text-[#3e2723] font-bold shadow-[4px_4px_0_#3e2723] transition-all" 
+                          placeholder="Votre Nom..." 
+                        />
                     </div>
                     <div className="relative group">
                         <label className="block text-[#3e2723] font-black mb-1 uppercase text-xs tracking-widest pl-1">Fréquence (Email)</label>
-                        <input type="email" className="w-full px-4 py-4 bg-white border-2 border-[#3e2723] rounded-sm focus:outline-none focus:ring-4 focus:ring-op-red/20 focus:border-op-red text-[#3e2723] font-bold shadow-[4px_4px_0_#3e2723] transition-all" placeholder="votre_email@exemple.com" />
+                        <input 
+                          type="email" 
+                          value={formData.email}
+                          onChange={(e) => setFormData({...formData, email: e.target.value})}
+                          className="w-full px-4 py-4 bg-white border-2 border-[#3e2723] rounded-sm focus:outline-none focus:ring-4 focus:ring-op-red/20 focus:border-op-red text-[#3e2723] font-bold shadow-[4px_4px_0_#3e2723] transition-all" 
+                          placeholder="votre_email@exemple.com" 
+                        />
                     </div>
                     <div className="relative group">
                         <label className="block text-[#3e2723] font-black mb-1 uppercase text-xs tracking-widest pl-1">Parchemin de Message</label>
-                        <textarea rows={4} className="w-full px-4 py-4 bg-white border-2 border-[#3e2723] rounded-sm focus:outline-none focus:ring-4 focus:ring-op-red/20 focus:border-op-red text-[#3e2723] font-bold shadow-[4px_4px_0_#3e2723] transition-all resize-none" placeholder="J'ai trouvé le One Piece..."></textarea>
+                        <textarea 
+                          rows={4} 
+                          value={formData.message}
+                          onChange={(e) => setFormData({...formData, message: e.target.value})}
+                          className="w-full px-4 py-4 bg-white border-2 border-[#3e2723] rounded-sm focus:outline-none focus:ring-4 focus:ring-op-red/20 focus:border-op-red text-[#3e2723] font-bold shadow-[4px_4px_0_#3e2723] transition-all resize-none" 
+                          placeholder="J'ai trouvé le One Piece..."
+                        ></textarea>
                     </div>
                     
-                    <button type="button" className="w-full bg-[#3e2723] text-op-gold font-black text-xl py-4 rounded-sm uppercase tracking-widest hover:bg-op-red hover:text-white transition-all duration-300 shadow-[6px_6px_0_#000] active:translate-y-1 active:shadow-[2px_2px_0_#000] flex items-center justify-center gap-3 group">
+                    <button 
+                      type="submit" 
+                      className="w-full bg-[#3e2723] text-op-gold font-black text-xl py-4 rounded-sm uppercase tracking-widest hover:bg-op-red hover:text-white transition-all duration-300 shadow-[6px_6px_0_#000] active:translate-y-1 active:shadow-[2px_2px_0_#000] flex items-center justify-center gap-3 group"
+                    >
                         <Send className="w-6 h-6 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
                         Envoyer le Message
                     </button>
