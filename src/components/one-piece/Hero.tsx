@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-scroll';
 
 import profilePic from './file.jpeg';
 
@@ -108,15 +109,21 @@ const Hero: React.FC = () => {
           <p className="text-base md:text-xl text-gray-700 dark:text-gray-300 mb-8 max-w-lg mx-auto md:mx-0 font-medium w-full">
             Hissant les voiles sur la Grand Line du code. Création d'interfaces légendaires et conquête des mers du backend.
           </p>
-          <motion.a 
-            href="#projects"
-            whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(214, 52, 71, 0.6)" }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-block bg-op-red text-white text-xl font-bold py-4 px-10 rounded-full shadow-[0_4px_14px_0_rgba(214,52,71,0.39)] border-2 border-transparent hover:border-op-gold transition-all cursor-pointer relative overflow-hidden group"
+          <Link 
+            to="projects"
+            smooth={true}
+            duration={500}
+            offset={-80}
           >
-            <span className="relative z-10">VOIR LES PRIMES</span>
-            <div className="absolute inset-0 h-full w-full scale-0 rounded-full transition-all duration-300 group-hover:scale-100 group-hover:bg-red-700/50"></div>
-          </motion.a>
+            <motion.div 
+              whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(214, 52, 71, 0.6)" }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-block bg-op-red text-white text-xl font-bold py-4 px-10 rounded-full shadow-[0_4px_14px_0_rgba(214,52,71,0.39)] border-2 border-transparent hover:border-op-gold transition-all cursor-pointer relative overflow-hidden group mt-4"
+            >
+              <span className="relative z-10">VOIR LES PRIMES</span>
+              <div className="absolute inset-0 h-full w-full scale-0 rounded-full transition-all duration-300 group-hover:scale-100 group-hover:bg-red-700/50"></div>
+            </motion.div>
+          </Link>
         </motion.div>
 
         {/* Wanted Poster */}

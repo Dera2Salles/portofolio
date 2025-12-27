@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Menu, Moon, Sun, X } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-scroll';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,14 +34,14 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-20">
           
           {/* Logo - Jolly Roger Style */}
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
+          <Link 
+            to="home"
+            smooth={true}
+            duration={500}
             className="flex items-center space-x-3 cursor-pointer group"
           >
             <div className="relative">
                 <div className="absolute inset-0 bg-op-red blur-md opacity-0 group-hover:opacity-60 transition-opacity duration-300 rounded-full"></div>
-                {/* Replaced Anchor with a more "Pirate" icon if available, ensuring valid import. Using Skull from lucide which is standard. */}
                 <div className="relative z-10 p-2 bg-op-gold text-[#3e2723] rounded-full border-2 border-white shadow-lg group-hover:rotate-12 transition-transform duration-300">
                     <span className="font-serif font-black text-xl">☠️</span> 
                 </div>
@@ -48,21 +49,28 @@ const Navbar: React.FC = () => {
             <span className="hidden md:block font-serif font-black text-2xl tracking-widest text-op-cream text-shadow-sm group-hover:text-op-gold transition-colors">
                 STRAW HAT DEV
             </span>
-          </motion.div>
+          </Link>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             <div className="flex items-baseline space-x-2">
               {links.map((link) => (
-                <motion.a
+                <Link
                   key={link.name}
-                  href={link.href}
-                  className="relative px-4 py-2 rounded-sm text-lg font-bold text-op-cream transition-all duration-300 group overflow-hidden"
+                  to={link.href.substring(1)}
+                  smooth={true}
+                  duration={500}
+                  offset={-80}
+                  className="cursor-pointer"
                 >
-                  <span className="relative z-10 group-hover:text-white transition-colors">{link.name}</span>
-                  {/* Haki Hover Effect */}
-                  <div className="absolute inset-0 bg-op-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                </motion.a>
+                  <motion.div
+                    className="relative px-4 py-2 rounded-sm text-lg font-bold text-op-cream transition-all duration-300 group overflow-hidden"
+                  >
+                    <span className="relative z-10 group-hover:text-white transition-colors">{link.name}</span>
+                    {/* Haki Hover Effect */}
+                    <div className="absolute inset-0 bg-op-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                  </motion.div>
+                </Link>
               ))}
             </div>
 
@@ -105,14 +113,17 @@ const Navbar: React.FC = () => {
         >
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {links.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
+                to={link.href.substring(1)}
+                smooth={true}
+                duration={500}
+                offset={-80}
                 onClick={() => setIsOpen(false)}
-                className="text-op-cream hover:bg-op-red hover:text-white block px-3 py-3 rounded-md text-lg font-black text-center uppercase tracking-widest border-b border-white/10 last:border-0"
+                className="text-op-cream hover:bg-op-red hover:text-white block px-3 py-3 rounded-md text-lg font-black text-center uppercase tracking-widest border-b border-white/10 last:border-0 cursor-pointer"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </div>
         </motion.div>
