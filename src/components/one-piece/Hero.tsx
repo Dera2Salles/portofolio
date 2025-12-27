@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 
-import profilePic from './file.jpeg'
+import profilePic from './file.jpeg';
 
 interface TypewriterTextProps {
   text: string;
@@ -77,7 +77,7 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center md:text-left"
+          className="flex flex-col items-center md:items-start text-center md:text-left"
         >
           <h2 className="text-2xl md:text-3xl font-bold mb-4 text-op-red dark:text-op-gold uppercase tracking-widest font-serif transition-colors">
             <TypewriterText text="Développeur Pirate Niveau 99" />

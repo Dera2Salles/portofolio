@@ -2,41 +2,51 @@ import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 import React from 'react';
 
+import asjaLogo from './asja-logo.png';
+import eContratLogo from './e_contrat.png';
+
+const githubLogo = "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png";
+
 const projects = [
   {
     title: "Sabotsy Market",
     bounty: "500,000,000",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?w=500&auto=format&fit=crop",
+    image: githubLogo,
     tech: ["Laravel", "PHP", "MySQL"],
-    desc: "Version Laravel de l'application web SabotsyMarket."
+    desc: "Version Laravel de l'application web SabotsyMarket.",
+    link: "https://github.com/Dera2Salles/sabotsy-market-laravel"
   },
   {
     title: "Site Web ASJA",
     bounty: "450,000,000",
-    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=500&auto=format&fit=crop",
+    image: asjaLogo,
     tech: ["TypeScript", "React", "Vite"],
-    desc: "Le nouveau site officiel de l'université ASJA (Athénée Saint Joseph Antsirabe)."
+    desc: "Le nouveau site officiel de l'université ASJA (Athénée Saint Joseph Antsirabe).",
+    link: "https://asjaweb.com"
   },
   {
     title: "DangerZone",
     bounty: "300,000,000",
-    image: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=500&auto=format&fit=crop",
+    image: githubLogo,
     tech: ["TypeScript", "GeoLocation", "Maps"],
-    desc: "Application web pour le suivi des zones de danger à Madagascar."
+    desc: "Application web pour le suivi des zones de danger à Madagascar.",
+    link: "https://github.com/Dera2Salles/DangerZone"
   },
   {
     title: "E_contrat",
     bounty: "250,000,000",
-    image: "https://images.unsplash.com/photo-1556741533-6e6a62bd8b49?w=500&auto=format&fit=crop",
+    image: eContratLogo,
     tech: ["Android", "Mobile", "Java/Kotlin"],
-    desc: "Application Android permettant de signer des contrats instantanément et simplement."
+    desc: "Application Android permettant de signer des contrats instantanément et simplement.",
+    link: "https://github.com/Dera2Salles/E_contrat"
   },
   {
     title: "Arosaina",
     bounty: "100,000,000",
-    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=500&auto=format&fit=crop",
+    image: githubLogo,
     tech: ["Flutter", "P2P", "Wi-Fi Direct"],
-    desc: "Application de transfert P2P sécurisée et sans serveur avec Flutter. Partage via Wi-Fi Direct sans internet."
+    desc: "Application de transfert P2P sécurisée et sans serveur avec Flutter. Partage via Wi-Fi Direct sans internet.",
+    link: "https://github.com/Dera2Salles"
   },
 ];
 
@@ -79,8 +89,8 @@ const BountyProjects: React.FC = () => {
                     {/* Hover Overlay */}
                     <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 space-y-3">
                         <div className="flex space-x-4">
-                            <a href="#" className="p-3 bg-white rounded-full hover:bg-op-gold hover:scale-110 transition-all"><Github className="w-6 h-6 text-black"/></a>
-                            <a href="#" className="p-3 bg-white rounded-full hover:bg-op-gold hover:scale-110 transition-all"><ExternalLink className="w-6 h-6 text-black"/></a>
+                            <a href={project.link} target="_blank" rel="noopener noreferrer" className="p-3 bg-white rounded-full hover:bg-op-gold hover:scale-110 transition-all"><Github className="w-6 h-6 text-black"/></a>
+                            <a href={project.link} target="_blank" rel="noopener noreferrer" className="p-3 bg-white rounded-full hover:bg-op-gold hover:scale-110 transition-all"><ExternalLink className="w-6 h-6 text-black"/></a>
                         </div>
                         <span className="text-white font-serif tracking-widest text-sm uppercase">Voir le Projet</span>
                     </div>
