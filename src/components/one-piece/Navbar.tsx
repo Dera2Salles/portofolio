@@ -45,7 +45,7 @@ const Navbar: React.FC = () => {
                     <span className="font-serif font-black text-xl">☠️</span> 
                 </div>
             </div>
-            <span className="font-serif font-black text-2xl tracking-widest text-op-cream text-shadow-sm group-hover:text-op-gold transition-colors">
+            <span className="hidden md:block font-serif font-black text-2xl tracking-widest text-op-cream text-shadow-sm group-hover:text-op-gold transition-colors">
                 STRAW HAT DEV
             </span>
           </motion.div>

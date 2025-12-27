@@ -29,7 +29,7 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({ text, delay = 0 }) => {
 
 const Hero: React.FC = () => {
   return (
-    <section id="home" className="relative min-h-screen bg-op-cream dark:bg-op-dark overflow-hidden flex items-center justify-center pt-20 transition-colors duration-300">
+    <section id="home" className="relative min-h-screen bg-op-cream dark:bg-op-dark overflow-hidden flex items-center justify-center pt-32 md:pt-20 transition-colors duration-300">
       
       {/* Background Elements - Red Mist / Haki Aura */}
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-transparent to-op-red/10 dark:to-op-red/30 pointer-events-none" />
@@ -37,35 +37,38 @@ const Hero: React.FC = () => {
       
       {/* Wave Animation */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10 drop-shadow-2xl">
-        <svg
-          className="relative block w-[calc(200%+1.3px)] h-[150px] animate-wave"
-          data-name="Layer 1"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
+        <motion.div
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ repeat: Infinity, ease: "linear", duration: 10 }}
+          className="flex w-[200%]"
         >
-            <style>
-                {`
-                    @keyframes wave {
-                        0% { transform: translateX(0); }
-                        100% { transform: translateX(-50%); }
-                    }
-                    .animate-wave {
-                        animation: wave 10s linear infinite;
-                    }
-                `}
-            </style>
-          <path
-            d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
-            className="fill-op-red dark:fill-red-900 transition-colors duration-300"
-          ></path>
-          {/* Duplicate for seamless loop */}
-          <path
-             d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,2.97V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-             className="fill-op-red opacity-50 dark:fill-red-900 dark:opacity-40 transition-colors duration-300"
-             transform="translate(1200, 0)"
-           />
-        </svg>
+          {/* First Wave Instance */}
+          <svg
+            className="relative block w-full h-[150px]"
+            data-name="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
+              className="fill-op-red dark:fill-red-900 transition-colors duration-300"
+            ></path>
+          </svg>
+          {/* Second Wave Instance for Seamless Loop */}
+          <svg
+            className="relative block w-full h-[150px]"
+            data-name="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
+              className="fill-op-red opacity-50 dark:fill-red-900 dark:opacity-40 transition-colors duration-300"
+            ></path>
+          </svg>
+        </motion.div>
       </div>
 
 
@@ -79,19 +82,30 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="flex flex-col items-center md:items-start text-center md:text-left"
         >
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-op-red dark:text-op-gold uppercase tracking-widest font-serif transition-colors">
+          <h2 className="text-xl md:text-3xl font-bold mb-4 text-op-red dark:text-op-gold uppercase tracking-wide md:tracking-widest font-serif transition-colors w-full">
             <TypewriterText text="Développeur Pirate Niveau 99" />
           </h2>
-          <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight text-gray-900 dark:text-white transition-colors">
-            JE SERAI LE <br/>
-            <span className="text-op-red text-stroke-red relative inline-block">
-                ROI DU CODING !
-                <svg className="absolute -bottom-2 left-0 w-full h-3 text-op-gold" viewBox="0 0 100 10" preserveAspectRatio="none">
+          <h1 className="text-3xl md:text-7xl font-extrabold mb-6 leading-tight text-gray-900 dark:text-white transition-colors break-words drop-shadow-sm">
+            MAÎTRISANT LE <br/>
+            <motion.span 
+               animate={{ 
+                textShadow: [
+                  "0 0 10px rgba(214, 52, 71, 0.5), 0 0 20px rgba(214, 52, 71, 0.3)",
+                  "0 0 25px rgba(214, 52, 71, 0.8), 0 0 40px rgba(139, 92, 246, 0.6)",
+                  "0 0 10px rgba(214, 52, 71, 0.5), 0 0 20px rgba(214, 52, 71, 0.3)"
+                ],
+                scale: [1, 1.02, 1]
+              }}
+              transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+              className="text-op-red text-stroke-red relative inline-block group"
+            >
+                HAKI DU FULLSTACK
+                <svg className="absolute -bottom-2 left-0 w-full h-3 text-op-gold opacity-70 group-hover:opacity-100 transition-opacity" viewBox="0 0 100 10" preserveAspectRatio="none">
                     <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="3" fill="none" />
                 </svg>
-            </span>
+            </motion.span>
           </h1>
-          <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-8 max-w-lg mx-auto md:mx-0 font-medium">
+          <p className="text-base md:text-xl text-gray-700 dark:text-gray-300 mb-8 max-w-lg mx-auto md:mx-0 font-medium w-full">
             Hissant les voiles sur la Grand Line du code. Création d'interfaces légendaires et conquête des mers du backend.
           </p>
           <motion.a 

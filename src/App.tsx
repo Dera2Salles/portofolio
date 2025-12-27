@@ -4,6 +4,7 @@ import DenDenContact from "./components/one-piece/DenDenContact";
 import DevilFruitSkills from "./components/one-piece/DevilFruitSkills";
 import Footer from "./components/one-piece/Footer";
 import Hero from "./components/one-piece/Hero";
+import MusicPlayer from "./components/one-piece/MusicPlayer";
 import Navbar from "./components/one-piece/Navbar";
 import Services from "./components/one-piece/Services";
 
@@ -17,6 +18,7 @@ const App: React.FC = () => {
       <BountyProjects />
       <DenDenContact />
       <Footer />
+      <MusicPlayer />
     </div>
   );
 };
