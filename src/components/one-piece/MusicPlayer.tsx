@@ -33,19 +33,16 @@ const MusicPlayer: React.FC = () => {
         animate={{ scale: 1, rotate: 0 }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        className={`relative group flex items-center justify-center w-16 h-16 rounded-full border-4 border-[#5c3a1e] shadow-2xl transition-all duration-300
-          ${isPlaying ? 'bg-op-red' : 'bg-op-gold'}`}
-        title={isPlaying ? "Mettre en pause" : "Écouter We Are!"}
+        className={`relative group flex items-center justify-center w-16 h-16 rounded-full border-2 border-purple-400 shadow-2xl transition-all duration-300
+          ${isPlaying ? 'bg-gradient-to-br from-purple-600 to-purple-500' : 'bg-gradient-to-br from-purple-500 to-purple-600'}`}
+        title={isPlaying ? "Pause" : "Play Music"}
       >
-        {/* Dial Texture */}
-        <div className="absolute inset-0 rounded-full opacity-20 bg-[url('https://www.transparenttextures.com/patterns/old-map.png')] pointer-events-none"></div>
-        
         {/* Glow effect when playing */}
         {isPlaying && (
-          <div className="absolute inset-0 rounded-full bg-op-red blur-lg animate-pulse opacity-50"></div>
+          <div className="absolute inset-0 rounded-full bg-purple-500 blur-lg animate-pulse opacity-50"></div>
         )}
 
-        <div className="relative z-10 text-[#3e2723] group-hover:text-white transition-colors">
+        <div className="relative z-10 text-white group-hover:scale-110 transition-transform">
           {isPlaying ? (
             <Pause className="w-8 h-8 fill-current" />
           ) : (
@@ -53,9 +50,9 @@ const MusicPlayer: React.FC = () => {
           )}
         </div>
 
-        {/* Small "Label" */}
-        <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-[#3e2723] text-op-gold text-[10px] font-black px-2 py-1 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-op-gold">
-          {isPlaying ? "PAUSE" : "PLAY WE ARE!"}
+        {/* Tooltip */}
+        <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs font-semibold px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-purple-500/30">
+          {isPlaying ? "PAUSE" : "PLAY MUSIC"}
         </div>
       </motion.button>
     </div>

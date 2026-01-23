@@ -10,126 +10,100 @@ const githubLogo = "https://github.githubassets.com/images/modules/logos_page/Gi
 const projects = [
   {
     title: "Sabotsy Market",
-    bounty: "500,000,000",
     image: githubLogo,
     tech: ["Laravel", "PHP", "MySQL"],
-    desc: "Version Laravel de l'application web SabotsyMarket.",
+    desc: "Laravel version of the SabotsyMarket web application.",
     link: "https://github.com/Dera2Salles/sabotsy-market-laravel"
   },
   {
-    title: "Site Web ASJA",
-    bounty: "450,000,000",
+    title: "ASJA Website",
     image: asjaLogo,
     tech: ["TypeScript", "React", "Vite"],
-    desc: "Le nouveau site officiel de l'université ASJA (Athénée Saint Joseph Antsirabe).",
+    desc: "The new official website for ASJA University (Athénée Saint Joseph Antsirabe).",
     link: "https://asjaweb.com"
   },
   {
     title: "DangerZone",
-    bounty: "300,000,000",
     image: githubLogo,
     tech: ["TypeScript", "GeoLocation", "Maps"],
-    desc: "Application web pour le suivi des zones de danger à Madagascar.",
+    desc: "Web application for tracking danger zones in Madagascar.",
     link: "https://github.com/Dera2Salles/DangerZone"
   },
   {
     title: "E_contrat",
-    bounty: "250,000,000",
     image: eContratLogo,
     tech: ["Android", "Mobile", "Java/Kotlin"],
-    desc: "Application Android permettant de signer des contrats instantanément et simplement.",
+    desc: "Android application for signing contracts instantly and simply.",
     link: "https://github.com/Dera2Salles/E_contrat"
   },
   {
     title: "Arosaina",
-    bounty: "100,000,000",
     image: githubLogo,
     tech: ["Flutter", "P2P", "Wi-Fi Direct"],
-    desc: "Application de transfert P2P sécurisée et sans serveur avec Flutter. Partage via Wi-Fi Direct sans internet.",
+    desc: "Secure serverless P2P transfer application with Flutter. Share via Wi-Fi Direct without internet.",
     link: "https://github.com/Dera2Salles"
   },
 ];
 
 const BountyProjects: React.FC = () => {
   return (
-    <section id="projects" className="py-20 bg-[url('https://www.transparenttextures.com/patterns/wood-pattern.png')] bg-op-blue dark:bg-gray-900 transition-colors duration-300">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-black text-center text-op-cream dark:text-op-red mb-4 uppercase drop-shadow-md transition-colors font-serif tracking-in-expand">
-           Tableau des Primes
+    <section id="projects" className="py-20 bg-gradient-to-br from-gray-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-20 left-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl" />
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <h2 className="text-4xl md:text-5xl font-bold text-center text-gray-900 dark:text-white mb-4">
+           Featured Projects
         </h2>
-        <p className="text-center text-op-gold text-lg mb-16 uppercase tracking-widest font-bold">Projets Recherchés</p>
+        <p className="text-center text-purple-600 dark:text-purple-400 text-lg mb-16 font-normal">Showcasing my recent work</p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {projects.map((project, index) => (
                <motion.div
                  key={index}
-                 initial={{ opacity: 0, scale: 0.9, rotate: index % 2 === 0 ? 1 : -1 }}
-                 whileInView={{ opacity: 1, scale: 1, rotate: index % 2 === 0 ? 2 : -2 }}
-                 whileHover={{ scale: 1.05, rotate: 0, zIndex: 10 }}
+                 initial={{ opacity: 0, scale: 0.9 }}
+                 whileInView={{ opacity: 1, scale: 1 }}
+                 whileHover={{ y: -10 }}
                  viewport={{ once: true }}
                  transition={{ duration: 0.4 }}
-                 className="bg-[#F4E4BC] p-5 shadow-2xl relative border-[12px] border-[#4e342e] max-w-sm mx-auto w-full group overflow-hidden"
+                 className="backdrop-blur-xl bg-white/70 dark:bg-gray-800/70 rounded-2xl overflow-hidden shadow-xl border border-purple-200/50 dark:border-purple-500/30 max-w-sm mx-auto w-full group hover:border-purple-500 dark:hover:border-purple-400 transition-all"
                >
-                 {/* Paper Texture Overlay */}
-                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/old-map.png')] opacity-20 pointer-events-none mix-blend-multiply"></div>
-                 
-                 {/* Pin */}
-                 <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-gray-300 shadow-md border-2 border-gray-500 z-20"></div>
-
-                 {/* WANTED Header */}
-                 <div className="text-center mb-2 px-1 relative z-10">
-                    <h2 className="text-4xl md:text-5xl font-serif font-black tracking-[0.2em] text-[#3e2723] uppercase scale-y-125 pt-2">WANTED</h2>
-                    <h3 className="text-sm md:text-base font-serif font-bold tracking-widest text-[#3e2723] opacity-80 -mt-1 mb-2">DEAD OR ALIVE</h3>
-                 </div>
-
                  {/* Image Container */}
-                 <div className="border-[3px] border-[#3e2723] bg-gray-800 h-48 w-full mb-3 overflow-hidden relative shadow-inner group-hover:shadow-xl transition-shadow">
-                    <img src={project.image} alt={project.title} className="w-full h-full object-cover grayscale sepia contrast-125 brightness-90 group-hover:grayscale-0 group-hover:sepia-0 group-hover:brightness-100 transition-all duration-500" />
+                 <div className="h-48 w-full overflow-hidden relative bg-gradient-to-br from-purple-500/10 to-purple-600/10">
+                    <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                     
                     {/* Hover Overlay */}
-                    <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 space-y-3">
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-600/90 to-purple-800/90 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 space-y-3">
                         <div className="flex space-x-4">
-                            <a href={project.link} target="_blank" rel="noopener noreferrer" className="p-3 bg-white rounded-full hover:bg-op-gold hover:scale-110 transition-all"><Github className="w-6 h-6 text-black"/></a>
-                            <a href={project.link} target="_blank" rel="noopener noreferrer" className="p-3 bg-white rounded-full hover:bg-op-gold hover:scale-110 transition-all"><ExternalLink className="w-6 h-6 text-black"/></a>
+                            <a href={project.link} target="_blank" rel="noopener noreferrer" className="p-3 bg-white rounded-full hover:bg-purple-100 hover:scale-110 transition-all">
+                              <Github className="w-6 h-6 text-purple-600"/>
+                            </a>
+                            <a href={project.link} target="_blank" rel="noopener noreferrer" className="p-3 bg-white rounded-full hover:bg-purple-100 hover:scale-110 transition-all">
+                              <ExternalLink className="w-6 h-6 text-purple-600"/>
+                            </a>
                         </div>
-                        <span className="text-white font-serif tracking-widest text-sm uppercase">Voir le Projet</span>
+                        <span className="text-white font-semibold tracking-wide text-sm uppercase">View Project</span>
                     </div>
                  </div>
                  
-                 {/* Project Title */}
-                 <h3 className="text-2xl md:text-3xl font-black text-[#3e2723] uppercase text-center mb-1 font-serif tracking-tighter leading-none">{project.title}</h3>
-                 
-                 {/* Bounty Amount */}
-                 <div className="text-center mb-4 flex items-baseline justify-center space-x-2 border-t-2 border-b-2 border-[#3e2723]/20 py-1 mx-4">
-                     <span className="text-sm font-bold text-[#3e2723] opacity-70 serif uppercase">Bounty</span>
-                     <div className="flex items-center">
-                        <span className="text-xl font-serif font-bold text-[#3e2723] mr-1">฿</span>
-                        <span className="text-2xl md:text-3xl font-black text-[#3e2723] tracking-widest">{project.bounty}</span>
-                        <span className="text-xl font-serif font-bold text-[#3e2723] ml-1">-</span>
-                     </div>
-                 </div>
-
-                 {/* Description */}
-                 <div className="px-2 mb-4 h-16 flex items-center justify-center">
-                    <p className="text-[#3e2723] text-sm font-serif text-center font-semibold leading-tight line-clamp-3 opacity-90">
-                        {project.desc}
-                    </p>
-                 </div>
-                 
-                 {/* Tech Stack Marine Tags */}
-                 <div className="flex flex-wrap justify-center gap-2 mb-2">
-                     {project.tech.map(t => (
-                         <span key={t} className="px-2 py-0.5 bg-[#3e2723] text-[#F4E4BC] text-[10px] font-black uppercase rounded-sm border border-[#F4E4BC]/50 shadow-sm">{t}</span>
-                     ))}
-                 </div>
-
-                 {/* Marine Badge/Stamp */}
-                 <div className="absolute bottom-4 right-4 text-[#3e2723] opacity-10 font-black text-xs rotate-[-15deg] border-4 border-[#3e2723] p-1 rounded-full w-16 h-16 flex items-center justify-center pointer-events-none group-hover:opacity-100 group-hover:text-red-800 group-hover:border-red-800 transition-all duration-300">
-                    <span className="text-center leading-none text-[8px]">MARINE<br/>APPROVED</span>
-                 </div>
-
-                 <div className="absolute bottom-2 left-4 text-[10px] font-bold text-[#3e2723] opacity-60">
-                    MARINE
+                 <div className="p-6">
+                   {/* Project Title */}
+                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">{project.title}</h3>
+                   
+                   {/* Description */}
+                   <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4 min-h-[60px]">
+                       {project.desc}
+                   </p>
+                   
+                   {/* Tech Stack */}
+                   <div className="flex flex-wrap gap-2">
+                       {project.tech.map(t => (
+                           <span key={t} className="px-3 py-1 bg-gradient-to-r from-purple-500/10 to-purple-600/10 text-purple-700 dark:text-purple-300 text-xs font-semibold rounded-full border border-purple-500/20">
+                             {t}
+                           </span>
+                       ))}
+                   </div>
                  </div>
                </motion.div> 
             ))}
