@@ -15,9 +15,9 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="flex flex-col items-start text-left"
         >
-           className="text-lg font-medium mb-4 text-sky-600 uppercase tracking-widest">
-            Full Stack Developer
-          </>
+          <h2 className="text-lg font-medium mb-4 text-sky-600 uppercase tracking-widest">
+            Full Stack Developerdnakdad
+          </h2>
           <h1 className="text-5xl md:text-6xl font-bold mb-8 leading-tight">
             <span className="block">DERANDRAINY</span>
             <span className="block text-sky-600">MARIE</span>
