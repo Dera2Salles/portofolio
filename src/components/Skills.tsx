@@ -46,41 +46,34 @@ const skills = [
 
 const Skills: React.FC = () => {
   return (
-    <section id="skills" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">Technical Skills</h2>
-          <div className="w-24 h-1 bg-sky-600 mx-auto mb-4"></div>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            A comprehensive set of technical skills developed through years of practice and real-world projects
+    <section id="skills" className="py-32 bg-gray-50">
+      <div className="container mx-auto px-4 max-w-5xl">
+        <div className="mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight mb-6">Technical Capabilities</h2>
+          <p className="text-xl text-gray-600 max-w-2xl font-light">
+            Core competencies and technologies I leverage to build highly performant, scalable applications.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-          {skills.map((skill, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="space-y-3"
-            >
-              <div className="flex justify-between items-center">
-                <span className="font-semibold text-gray-800">{skill.name}</span>
-                <span className="text-sm text-gray-600">{skill.category}</span>
-              </div>
-              <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${skill.level}%` }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1, delay: index * 0.1 }}
-                  className="h-full bg-gradient-to-r from-sky-500 to-sky-600 rounded-full"
-                />
-              </div>
-              <div className="text-right text-sm text-gray-500">{skill.level}%</div>
-            </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {Array.from(new Set(skills.map(s => s.category))).map((category, catIdx) => (
+             <motion.div
+                key={category}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: catIdx * 0.1 }}
+             >
+               <h3 className="text-lg font-semibold mb-4 text-gray-900 border-b border-gray-200 pb-2">{category}</h3>
+               <div className="flex flex-col gap-3">
+                 {skills.filter(s => s.category === category).map((skill, idx) => (
+                    <div key={idx} className="flex items-center text-gray-700">
+                      <div className="w-1.5 h-1.5 bg-gray-400 rounded-full mr-3"></div>
+                      <span className="font-medium">{skill.name}</span>
+                    </div>
+                 ))}
+               </div>
+             </motion.div>
           ))}
         </div>
       </div>

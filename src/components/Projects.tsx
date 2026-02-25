@@ -1,102 +1,115 @@
-import { motion } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
-import React from 'react';
+import { motion } from "framer-motion";
+import { ExternalLink, Github } from "lucide-react";
+import React from "react";
 
 const projects = [
   {
     title: "Sabotsy Market",
-    description: "Laravel e-commerce platform with modern features and responsive design",
+    description:
+      "Laravel e-commerce platform with modern features and responsive design",
     tech: ["Laravel", "PHP", "MySQL", "Bootstrap"],
     github: "https://github.com/Dera2Salles/sabotsy-market-laravel",
-    live: "#"
+    live: "#",
   },
   {
     title: "ASJA University Website",
-    description: "Official website for ASJA University built with modern React and TypeScript",
+    description:
+      "Official website for ASJA University built with modern React and TypeScript",
     tech: ["React", "TypeScript", "Vite", "Tailwind"],
     github: "#",
-    live: "https://asjaweb.com"
+    live: "https://asjaweb.com",
   },
   {
     title: "DangerZone",
-    description: "Web application for tracking danger zones using geolocation services",
+    description:
+      "Web application for tracking danger zones using geolocation services",
     tech: ["TypeScript", "Map API", "Node.js"],
     github: "https://github.com/Dera2Salles/DangerZone",
-    live: "#"
+    live: "#",
   },
   {
     title: "E_contrat Mobile App",
-    description: "Android application for digital contract signing and management",
+    description:
+      "Android application for digital contract signing and management",
     tech: ["Android", "Java", "Firebase"],
     github: "https://github.com/Dera2Salles/E_contrat",
-    live: "#"
+    live: "#",
   },
   {
     title: "Arosaina P2P",
-    description: "Secure serverless P2P file transfer using Wi-Fi Direct technology",
+    description:
+      "Secure serverless P2P file transfer using Wi-Fi Direct technology",
     tech: ["Flutter", "P2P", "Wi-Fi Direct"],
     github: "https://github.com/Dera2Salles",
-    live: "#"
-  }
+    live: "#",
+  },
 ];
 
 const Projects: React.FC = () => {
   return (
-    <section id="projects" className="py-20 bg-sky-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">Featured Projects</h2>
-          <div className="w-24 h-1 bg-sky-600 mx-auto mb-4"></div>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            A selection of my recent work showcasing different technologies and solutions
+    <section id="projects" className="py-32 bg-white border-t border-gray-100">
+      <div className="container mx-auto px-4 max-w-6xl">
+        <div className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">
+              Featured Work
+            </h2>
+            <div className="w-12 h-1 bg-gray-900 mt-6"></div>
+          </div>
+          <p className="text-lg text-gray-500 max-w-md font-light">
+            Selected projects demonstrating architecture, problem-solving, and
+            full-stack capabilities.
           </p>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <div className="flex flex-col gap-16 md:gap-24">
           {projects.map((project, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
-              className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-shadow duration-300"
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7 }}
+              className="group flex flex-col md:flex-row gap-8 md:gap-16 items-start"
             >
-              <div className="p-6">
-                <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-xl font-bold text-gray-800">{project.title}</h3>
-                  <div className="flex space-x-2">
-                    <a 
-                      href={project.github} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="p-2 text-gray-600 hover:text-sky-600 hover:bg-sky-50 rounded-lg transition-colors"
-                    >
-                      <Github className="w-5 h-5" />
-                    </a>
-                    {project.live !== "#" && (
-                      <a 
-                        href={project.live} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="p-2 text-gray-600 hover:text-sky-600 hover:bg-sky-50 rounded-lg transition-colors"
-                      >
-                        <ExternalLink className="w-5 h-5" />
-                      </a>
-                    )}
-                  </div>
+              <div className="w-full md:w-1/3 pt-2">
+                <div className="flex items-center gap-4 mb-4">
+                  <h3 className="text-3xl font-bold text-gray-900 group-hover:text-gray-600 transition-colors">
+                    {project.title}
+                  </h3>
                 </div>
-                
-                <p className="text-gray-600 mb-6 leading-relaxed">
+                <div className="flex space-x-3 mb-6">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-gray-900 transition-colors"
+                  >
+                    <Github className="w-6 h-6" />
+                  </a>
+                  {project.live !== "#" && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-400 hover:text-gray-900 transition-colors"
+                    >
+                      <ExternalLink className="w-6 h-6" />
+                    </a>
+                  )}
+                </div>
+              </div>
+
+              <div className="w-full md:w-2/3">
+                <p className="text-xl text-gray-600 mb-8 leading-relaxed font-light">
                   {project.description}
                 </p>
-                
-                <div className="flex flex-wrap gap-2">
+
+                <div className="flex flex-wrap gap-3">
                   {project.tech.map((tech, idx) => (
-                    <span 
+                    <span
                       key={idx}
-                      className="px-3 py-1 bg-sky-50 text-sky-600 text-sm font-medium rounded-full"
+                      className="px-4 py-1.5 bg-gray-50 text-gray-600 text-sm font-medium border border-gray-100 rounded-full"
                     >
                       {tech}
                     </span>
