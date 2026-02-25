@@ -16,7 +16,7 @@ const Hero: React.FC = () => {
           className="flex flex-col items-start text-left"
         >
           <h2 className="text-lg font-medium mb-4 text-sky-600 uppercase tracking-widest">
-            Full Stack Developerdnakdad
+            Full Stack Developer
           </h2>
           <h1 className="text-5xl md:text-6xl font-bold mb-8 leading-tight">
             <span className="block">DERANDRAINY</span>
