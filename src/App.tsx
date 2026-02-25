@@ -5,7 +5,6 @@ import Skills from "./components/Skills";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
-import Team from "./components/Team";
 
 const App: React.FC = () => {
   return (
@@ -14,7 +13,6 @@ const App: React.FC = () => {
       <Hero />
       <Skills />
       <Projects />
-      <Team />
       <Contact />
       <Footer />
     </div>

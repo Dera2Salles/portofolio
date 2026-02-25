@@ -4,7 +4,7 @@ import React from "react";
 
 const projects = [
   {
-    title: "Sabotsy Market",
+    title: "SabotsyMarket",
     description:
       "Laravel e-commerce platform with modern features and responsive design",
     tech: ["Laravel", "PHP", "MySQL", "Bootstrap"],
@@ -28,7 +28,7 @@ const projects = [
     live: "#",
   },
   {
-    title: "E_contrat Mobile App",
+    title: "E-contrat",
     description:
       "Android application for digital contract signing and management",
     tech: ["Android", "Java", "Firebase"],
@@ -36,11 +36,35 @@ const projects = [
     live: "#",
   },
   {
-    title: "Arosaina P2P",
+    title: "Arosaina",
     description:
       "Secure serverless P2P file transfer using Wi-Fi Direct technology",
     tech: ["Flutter", "P2P", "Wi-Fi Direct"],
     github: "https://github.com/Dera2Salles",
+    live: "#",
+  },
+  {
+    title: "C-tools",
+    description:
+      "Low-level system utilities in C for file handling, automation, and Linux system operations.",
+    tech: ["Langage C", "System programming", "Linux"],
+    github: "https://github.com/Dera2Salles/C-tools.git",
+    live: "#",
+  },
+  {
+    title: "Help desk",
+    description:
+      "Ticket management platform for reporting, tracking, and resolving technical issues in an organized workflow.",
+    tech: ["Python", "Django", "Web"],
+    github: "https://github.com/Dera2Salles/Help-desk.git",
+    live: "#",
+  },
+  {
+    title: "Time Table",
+    description:
+      "Command-line scheduling tool in Java for managing timetables, tasks, and daily planning efficiently.",
+    tech: ["Java" , "Maven"],
+    github: "https://github.com/Dera2Salles/Time-table.git",
     live: "#",
   },
 ];

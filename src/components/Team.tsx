@@ -3,7 +3,7 @@ import React from "react";
 
 const teamMembers = [
   {
-    name: "Alexandre Dubois",
+    name: "Santatra",
     role: "Frontend Specialist",
     description:
       "Expert in React and modern JavaScript frameworks with 5+ years of experience",
