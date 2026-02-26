@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import React from 'react';
 import { Link } from 'react-scroll';
-import profilePic from './file.jpeg';
+import profilePic from './file.png';
 
 const Hero: React.FC = () => {
   return (
