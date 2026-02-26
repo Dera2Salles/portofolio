@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
           <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight text-gray-900">
             Derandrainy
             <br />
-            M. de Salles.
+            M. De Salles.
           </h1>
           <p className="text-xl text-gray-600 mb-10 max-w-lg leading-relaxed font-light">
             I engineer robust, scalable digital solutions. Specializing in full-stack architecture and high-performance applications.
