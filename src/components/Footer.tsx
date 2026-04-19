@@ -2,26 +2,42 @@ import React from "react";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-50 border-t border-gray-200 py-8">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
-            <p className="text-gray-800 font-semibold">
+    <footer style={{
+      background: "var(--mocha-crust)",
+      borderTop: "1px solid var(--mocha-s0)",
+      padding: "32px 0",
+    }}>
+      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 32px" }}>
+        <div style={{
+          display: "flex", flexDirection: "row",
+          justifyContent: "space-between", alignItems: "center",
+          flexWrap: "wrap", gap: "16px",
+        }}>
+          <div>
+            <p style={{ fontSize: "14px", fontWeight: 800, color: "var(--mocha-text)", letterSpacing: "0.05em" }}>
               DERANDRAINY MARIE MARTINOT DE SALLES
             </p>
-            <p className="text-gray-600 text-sm">Full Stack Developer</p>
-          </div>
-
-          <div className="text-center">
-            <p className="text-gray-600 text-sm mb-2">
-              &copy; {new Date().getFullYear()} Portfolio. All rights reserved.
+            <p style={{ fontSize: "12px", color: "var(--mocha-ov1)", marginTop: "2px", fontWeight: 500 }}>
+              Full Stack Developer
             </p>
           </div>
 
-          <div className="mt-4 md:mt-0">
+          <div style={{ textAlign: "center" }}>
+            <p style={{ fontSize: "12px", color: "var(--mocha-ov0)" }}>
+              © {new Date().getFullYear()} Portfolio. All rights reserved.
+            </p>
+          </div>
+
+          <div>
             <a
               href="mailto:dera.ah.14@gmail.com"
-              className="text-sky-600 hover:text-sky-700 text-sm font-medium transition-colors"
+              style={{
+                fontSize: "13px", fontWeight: 600,
+                color: "var(--mocha-sub1)", textDecoration: "none",
+                transition: "color 0.2s ease",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--mocha-text)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--mocha-sub1)")}
             >
               dera.ah.14@gmail.com
             </a>

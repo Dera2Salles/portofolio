@@ -8,7 +8,7 @@ import Navbar from "./components/Navbar";
 
 const App: React.FC = () => {
   return (
-    <div className="bg-white min-h-screen text-gray-800 font-sans">
+    <div style={{ background: "var(--mocha-base)", minHeight: "100vh", color: "var(--mocha-text)" }}>
       <Navbar />
       <Hero />
       <Skills />
