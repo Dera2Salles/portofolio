@@ -16,12 +16,12 @@ const skills = [
 ];
 
 const categoryColors: Record<string, string> = {
-  Frontend: "#89b4fa",
-  Language: "#bac2de",
-  Backend: "#cba6f7",
-  Mobile: "#89dceb",
-  Database: "#94e2d5",
-  DevOps: "#fab387",
+  Frontend: "#0F172A",
+  Language: "#334155",
+  Backend: "#475569",
+  Mobile: "#0284C7",
+  Database: "#0D9488",
+  DevOps: "#D97706",
 };
 
 const Skills: React.FC = () => {
@@ -30,53 +30,37 @@ const Skills: React.FC = () => {
   return (
     <section
       id="skills"
-      style={{
-        padding: "120px 0",
-        background: "var(--mocha-mantle)",
-        position: "relative",
-      }}
+      className="py-16 sm:py-24 lg:py-32 bg-white relative"
     >
       {/* top divider */}
-      <div className="mocha-divider" style={{ position: "absolute", top: 0, left: 0, right: 0 }} />
+      <div className="mocha-divider absolute top-0 left-0 right-0" />
 
-      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 32px" }}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          style={{ marginBottom: "64px" }}
+          className="mb-12 sm:mb-16"
         >
-          <div style={{
-            display: "inline-flex", alignItems: "center", gap: "8px",
-            background: "var(--mocha-s0)", border: "1px solid var(--mocha-s1)",
-            borderRadius: "var(--r-pill)", padding: "6px 16px", marginBottom: "20px",
-          }}>
-            <span style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.15em", color: "var(--mocha-ov1)", textTransform: "uppercase" }}>
-              Technical Capabilities
+          <div className="inline-flex items-center gap-2 bg-slate-100 border border-slate-200 rounded-full px-4 py-1.5 mb-5">
+            <span className="text-xs font-bold tracking-widest text-slate-600 uppercase">
+              Compétences Techniques
             </span>
           </div>
-          <h2 style={{
-            fontSize: "clamp(36px, 5vw, 52px)", fontWeight: 900,
-            color: "var(--mocha-text)", letterSpacing: "-0.5px",
-            lineHeight: 1.1, marginBottom: "16px",
-          }}>
-            What I Work With
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-4">
+            Technologies & Outils
           </h2>
-          <p style={{ fontSize: "18px", color: "var(--mocha-ov1)", maxWidth: "520px", lineHeight: 1.7, fontWeight: 400 }}>
-            Core competencies and technologies I leverage to build highly performant, scalable applications.
+          <p className="text-sm sm:text-base text-slate-600 max-w-lg leading-relaxed font-normal">
+            Technologies et langages maîtrisés pour concevoir des applications scalables, réactives et performantes.
           </p>
         </motion.div>
 
         {/* Category grid */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-          gap: "16px",
-        }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {categories.map((category, catIdx) => {
-            const color = categoryColors[category] ?? "#bac2de";
+            const color = categoryColors[category] ?? "#475569";
             return (
               <motion.div
                 key={category}
@@ -84,34 +68,29 @@ const Skills: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: catIdx * 0.08 }}
-                className="oneui-card"
-                style={{ padding: "24px" }}
+                className="oneui-card p-5 sm:p-6"
               >
                 {/* Category header */}
-                <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "16px" }}>
-                  <div style={{
-                    width: "8px", height: "8px", borderRadius: "50%",
-                    background: color, flexShrink: 0,
-                    boxShadow: `0 0 8px ${color}55`,
-                  }} />
-                  <h3 style={{
-                    fontSize: "11px", fontWeight: 700, textTransform: "uppercase",
-                    letterSpacing: "0.12em", color: color,
-                  }}>
+                <div className="flex items-center gap-2 mb-4">
+                  <div
+                    className="w-2 h-2 rounded-full shrink-0"
+                    style={{ background: color }}
+                  />
+                  <h3
+                    className="text-xs font-bold uppercase tracking-wider"
+                    style={{ color: color }}
+                  >
                     {category}
                   </h3>
                 </div>
                 {/* Divider */}
-                <div style={{ height: "1px", background: "var(--mocha-s0)", marginBottom: "16px" }} />
+                <div className="h-px bg-slate-100 mb-4" />
                 {/* Skills */}
-                <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                <div className="flex flex-col gap-2.5">
                   {skills.filter((s) => s.category === category).map((skill, idx) => (
-                    <div key={idx} style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                      <div style={{
-                        width: "5px", height: "5px", borderRadius: "50%",
-                        background: "var(--mocha-ov0)", flexShrink: 0,
-                      }} />
-                      <span style={{ fontSize: "14px", fontWeight: 600, color: "var(--mocha-sub1)" }}>
+                    <div key={idx} className="flex items-center gap-2.5">
+                      <div className="w-1.5 h-1.5 rounded-full bg-slate-400 shrink-0" />
+                      <span className="text-sm font-semibold text-slate-800">
                         {skill.name}
                       </span>
                     </div>
@@ -123,7 +102,7 @@ const Skills: React.FC = () => {
         </div>
       </div>
 
-      <div className="mocha-divider" style={{ position: "absolute", bottom: 0, left: 0, right: 0 }} />
+      <div className="mocha-divider absolute bottom-0 left-0 right-0" />
     </section>
   );
 };

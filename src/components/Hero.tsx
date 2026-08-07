@@ -3,156 +3,93 @@ import React from 'react';
 import { Link } from 'react-scroll';
 import profilePic from './file.png';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onOpenContact: () => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
   return (
     <section
       id="home"
-      style={{
-        position: "relative",
-        minHeight: "100vh",
-        background: "var(--mocha-base)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        paddingTop: "80px",
-        overflow: "hidden",
-      }}
+      className="relative min-h-screen bg-white flex items-center justify-center pt-24 pb-12 overflow-hidden"
     >
-      {/* Background texture dots */}
-      <div style={{
-        position: "absolute", inset: 0, pointerEvents: "none",
-        backgroundImage: `radial-gradient(circle, rgba(69,71,90,0.4) 1px, transparent 1px)`,
-        backgroundSize: "32px 32px",
-        opacity: 0.5,
-      }} />
-      {/* Subtle glow top-right */}
-      <div style={{
-        position: "absolute", top: "-120px", right: "-80px",
-        width: "500px", height: "500px",
-        background: "radial-gradient(circle, rgba(186,194,222,0.06) 0%, transparent 70%)",
-        pointerEvents: "none",
-      }} />
-
-      <div style={{ maxWidth: "1280px", width: "100%", margin: "0 auto", padding: "0 32px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }}
-          className="grid-cols-1 md:grid-cols-2">
+      <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
           {/* Left: text */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="flex flex-col items-start"
           >
             {/* Eyebrow label */}
-            <div style={{
-              display: "inline-flex", alignItems: "center", gap: "8px",
-              background: "var(--mocha-s0)", border: "1px solid var(--mocha-s1)",
-              borderRadius: "var(--r-pill)", padding: "6px 16px",
-              marginBottom: "28px",
-            }}>
-              <div style={{ width: "7px", height: "7px", borderRadius: "50%", background: "var(--mocha-sub1)" }} />
-              <span style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.18em", color: "var(--mocha-sub0)", textTransform: "uppercase" }}>
-                Software Engineer
+            <div className="inline-flex items-center gap-2 bg-slate-100 border border-slate-200 rounded-full px-4 py-1.5 mb-6">
+              <div className="w-1.5 h-1.5 rounded-full bg-slate-900" />
+              <span className="text-xs font-bold tracking-widest text-slate-600 uppercase">
+                Ingénierie Software & Développement Full-Stack
               </span>
             </div>
 
-            <h1 style={{
-              fontSize: "clamp(48px, 7vw, 80px)",
-              fontWeight: 900,
-              lineHeight: 1.05,
-              letterSpacing: "-1.5px",
-              color: "var(--mocha-text)",
-              marginBottom: "24px",
-            }}>
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black leading-tight tracking-tight text-slate-900 mb-6">
               Derandrainy
               <br />
-              <span style={{ color: "var(--mocha-sub0)" }}>M. De Salles.</span>
+              <span className="text-slate-500">
+                M. De Salles
+              </span>
             </h1>
 
-            <p style={{
-              fontSize: "18px", color: "var(--mocha-ov1)",
-              marginBottom: "40px", maxWidth: "480px",
-              lineHeight: 1.75, fontWeight: 400,
-            }}>
-              I engineer robust, scalable digital solutions. Specializing in full-stack architecture and high-performance applications.
+            <p className="text-base sm:text-lg text-slate-600 mb-8 max-w-lg leading-relaxed font-normal">
+              Conception d'applications web performantes, de solutions mobiles et d'outils système avec une rigueur d'ingénierie et un design soigné.
             </p>
 
-            <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-              <Link to="projects" smooth duration={500} offset={-80}>
+            <div className="flex flex-wrap gap-3.5 w-full sm:w-auto">
+              <button
+                onClick={onOpenContact}
+                className="w-full sm:w-auto"
+              >
                 <motion.div
                   whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="oneui-btn-primary"
-                  style={{
-                    padding: "14px 28px", fontSize: "15px",
-                    cursor: "pointer", display: "inline-flex", alignItems: "center", gap: "8px",
-                  }}
+                  whileTap={{ scale: 0.98 }}
+                  className="oneui-btn-primary px-7 py-3.5 text-sm sm:text-base cursor-pointer inline-flex items-center justify-center gap-2.5 w-full sm:w-auto"
                 >
-                  <span>View My Work</span>
+                  <span>Démarrer un Projet</span>
                   <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </motion.div>
-              </Link>
-              <Link to="contact" smooth duration={500} offset={-80}>
+              </button>
+              <Link to="projects" smooth duration={500} offset={-80} className="w-full sm:w-auto">
                 <motion.div
                   whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="oneui-btn-ghost"
-                  style={{
-                    padding: "14px 28px", fontSize: "15px",
-                    cursor: "pointer", display: "inline-flex", alignItems: "center", gap: "8px",
-                  }}
+                  whileTap={{ scale: 0.98 }}
+                  className="oneui-btn-ghost px-7 py-3.5 text-sm sm:text-base cursor-pointer inline-flex items-center justify-center gap-2 w-full sm:w-auto"
                 >
-                  <span>Contact Me</span>
+                  <span>Voir mes Réalisations</span>
                 </motion.div>
               </Link>
             </div>
 
-            <div style={{ marginTop: "56px", display: "flex", alignItems: "center", gap: "12px" }}>
-              <div style={{ width: "32px", height: "1px", background: "var(--mocha-s2)" }} />
-              <p style={{ fontSize: "13px", color: "var(--mocha-ov0)", fontWeight: 500 }}>
-                Based in Madagascar • Available Remote
+            <div className="mt-10 sm:mt-14 flex items-center gap-3">
+              <div className="w-8 h-0.5 bg-slate-900" />
+              <p className="text-xs sm:text-sm text-slate-500 font-semibold">
+                Basé à Madagascar • Disponible pour Collaborations Internationales
               </p>
             </div>
           </motion.div>
 
           {/* Right: photo */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.92 }}
+            initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.9, ease: "easeOut" }}
-            style={{ position: "relative", display: "flex", justifyContent: "flex-end" }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="relative flex justify-center w-full max-w-sm mx-auto lg:max-w-none"
           >
-            {/* Decorative ring behind photo */}
-            <div style={{
-              position: "absolute", top: "-20px", right: "-20px",
-              width: "calc(100% + 40px)", height: "calc(100% + 40px)",
-              borderRadius: "var(--r-xl)",
-              border: "1px solid var(--mocha-s0)",
-              pointerEvents: "none",
-            }} />
-
-            <div style={{
-              position: "relative", width: "100%", maxWidth: "360px",
-              aspectRatio: "4/5",
-              background: "var(--mocha-mantle)",
-              borderRadius: "var(--r-xl)",
-              overflow: "hidden",
-              border: "1px solid var(--mocha-s1)",
-            }}>
+            <div className="relative w-full max-w-[300px] sm:max-w-[360px] aspect-[4/5] bg-slate-50 rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
               <img
                 src={profilePic}
                 alt="Profile"
-                style={{
-                  position: "absolute", inset: 0,
-                  width: "100%", height: "100%", objectFit: "cover",
-                  filter: "grayscale(100%)",
-                  transition: "filter 0.7s ease",
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.filter = "grayscale(0%)")}
-                onMouseLeave={(e) => (e.currentTarget.style.filter = "grayscale(100%)")}
+                className="absolute inset-0 w-full h-full object-cover grayscale-[10%] transition-all duration-300"
               />
             </div>
 
@@ -160,21 +97,12 @@ const Hero: React.FC = () => {
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-              style={{
-                position: "absolute", bottom: "-20px", left: "-20px",
-                background: "var(--mocha-mantle)",
-                border: "1px solid var(--mocha-s1)",
-                borderRadius: "var(--r-md)",
-                padding: "16px 24px",
-                boxShadow: "0 8px 30px rgba(0,0,0,0.35)",
-              }}
+              transition={{ delay: 0.3, duration: 0.4 }}
+              className="absolute -bottom-4 left-4 sm:left-8 bg-white border border-slate-200 rounded-xl px-5 py-3 shadow-md"
             >
-              <span style={{
-                fontFamily: "'Kalam', cursive", fontSize: "24px",
-                color: "var(--mocha-text)",
-                display: "inline-block", transform: "rotate(-5deg)",
-              }}>dera.</span>
+              <span className="font-['Kalam'] text-xl sm:text-22px text-slate-900 inline-block -rotate-6">
+                dera.
+              </span>
             </motion.div>
           </motion.div>
         </div>

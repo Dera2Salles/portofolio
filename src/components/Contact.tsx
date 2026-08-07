@@ -2,99 +2,94 @@ import { Mail, Send } from 'lucide-react';
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 
-const Contact: React.FC = () => {
+interface ContactProps {
+  onOpenContact?: () => void;
+}
+
+const Contact: React.FC<ContactProps> = ({ onOpenContact }) => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const { name, email, message } = formData;
-    const subject = `Message from ${name || 'Portfolio Visitor'}`;
-    const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+    const subject = `Message Escale de ${name || 'Visiteur'}`;
+    const body = `Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
     window.location.href = `mailto:dera.ah.14@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
   return (
     <section
       id="contact"
-      style={{ padding: "120px 0", background: "var(--mocha-mantle)", position: "relative" }}
+      className="py-16 sm:py-24 lg:py-32 bg-slate-50 relative"
     >
-      <div className="mocha-divider" style={{ position: "absolute", top: 0, left: 0, right: 0 }} />
+      <div className="mocha-divider absolute top-0 left-0 right-0" />
 
-      <div style={{ maxWidth: "900px", margin: "0 auto", padding: "0 32px" }}>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          style={{ marginBottom: "64px" }}
+          className="mb-12 sm:mb-16"
         >
-          <div style={{
-            display: "inline-flex", alignItems: "center", gap: "8px",
-            background: "var(--mocha-s0)", border: "1px solid var(--mocha-s1)",
-            borderRadius: "var(--r-pill)", padding: "6px 16px", marginBottom: "20px",
-          }}>
-            <span style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.15em", color: "var(--mocha-ov1)", textTransform: "uppercase" }}>
-              Get in touch
+          <div className="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-1.5 mb-5 shadow-xs">
+            <span className="text-xs font-bold tracking-widest text-slate-600 uppercase">
+              Prendre Contact
             </span>
           </div>
-          <h2 style={{
-            fontSize: "clamp(36px, 5vw, 52px)", fontWeight: 900,
-            color: "var(--mocha-text)", letterSpacing: "-0.5px",
-            lineHeight: 1.1, marginBottom: "16px",
-          }}>
-            Let's Connect
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-4">
+            Discutons de votre Projet
           </h2>
-          <p style={{ fontSize: "18px", color: "var(--mocha-ov1)", maxWidth: "500px", lineHeight: 1.7, fontWeight: 400 }}>
-            Available for architectural consulting, engineering roles, and strategic technical partnerships.
+          <p className="text-sm sm:text-base text-slate-600 max-w-lg leading-relaxed font-normal">
+            Disponible pour missions de développement full-stack, applications mobiles et consulting en architecture logicielle.
           </p>
         </motion.div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: "48px" }}
-          className="grid-cols-1 md:grid-cols-2">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 lg:gap-12">
 
-          {/* Contact info */}
+          {/* Contact info & Modal quick button */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            style={{ display: "flex", flexDirection: "column", gap: "32px" }}
+            className="md:col-span-2 flex flex-col gap-4"
           >
-            <div
-              className="oneui-card"
-              style={{ padding: "24px", display: "flex", alignItems: "flex-start", gap: "16px" }}
-            >
-              <div style={{
-                width: "40px", height: "40px", flexShrink: 0,
-                background: "var(--mocha-s0)", border: "1px solid var(--mocha-s1)",
-                borderRadius: "var(--r-sm)",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                color: "var(--mocha-sub1)",
-              }}>
+            {onOpenContact && (
+              <div className="oneui-card p-5 sm:p-6 bg-slate-900 text-white border-slate-900 flex flex-col gap-3">
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Modal Interactif</span>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Souhaitez-vous soumettre directement les détails d'un projet via notre formulaire interactif ?
+                </p>
+                <button
+                  onClick={onOpenContact}
+                  className="mt-1 py-2.5 px-4 bg-white text-slate-900 font-bold text-xs rounded-xl hover:bg-slate-100 transition-colors cursor-pointer w-full text-center"
+                >
+                  Ouvrir le Formulaire Projet
+                </button>
+              </div>
+            )}
+
+            <div className="oneui-card p-5 sm:p-6 flex items-start gap-4">
+              <div className="w-10 h-10 shrink-0 bg-slate-100 border border-slate-200 rounded-lg flex items-center justify-center text-slate-800">
                 <Mail size={18} />
               </div>
-              <div>
-                <p className="oneui-label">Electronic Mail</p>
+              <div className="overflow-hidden">
+                <p className="oneui-label text-xs">Courrier Électronique</p>
                 <a
                   href="mailto:dera.ah.14@gmail.com"
-                  style={{
-                    fontSize: "15px", fontWeight: 700,
-                    color: "var(--mocha-text)", textDecoration: "none",
-                    transition: "color 0.2s ease",
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--mocha-sub1)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--mocha-text)")}
+                  className="text-sm sm:text-base font-bold text-slate-900 hover:text-slate-600 transition-colors truncate block"
                 >
                   dera.ah.14@gmail.com
                 </a>
               </div>
             </div>
 
-            <div className="oneui-card" style={{ padding: "24px" }}>
-              <p className="oneui-label">Response Expectation</p>
-              <p style={{ fontSize: "15px", fontWeight: 600, color: "var(--mocha-text)", marginTop: "4px" }}>
-                Within 24–48 business hours
+            <div className="oneui-card p-5 sm:p-6">
+              <p className="oneui-label text-xs">Temps de Réponse Attendu</p>
+              <p className="text-sm font-semibold text-slate-900 mt-1">
+                Sous 24–48h ouvrées
               </p>
             </div>
           </motion.div>
@@ -106,39 +101,38 @@ const Contact: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            style={{ display: "flex", flexDirection: "column", gap: "32px" }}
+            className="md:col-span-3 flex flex-col gap-6"
           >
             <div>
-              <label className="oneui-label">Your Name</label>
+              <label className="oneui-label text-xs">Votre Nom / Organisation</label>
               <input
                 type="text"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="oneui-input"
+                className="oneui-input text-base"
                 placeholder="Jane Doe"
                 required
               />
             </div>
             <div>
-              <label className="oneui-label">Email Address</label>
+              <label className="oneui-label text-xs">Adresse E-mail</label>
               <input
                 type="email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="oneui-input"
+                className="oneui-input text-base"
                 placeholder="jane@example.com"
                 required
               />
             </div>
             <div>
-              <label className="oneui-label">Project Details</label>
+              <label className="oneui-label text-xs">Détails de l'Escale / Projet</label>
               <textarea
                 rows={4}
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="oneui-input"
-                style={{ resize: "none" }}
-                placeholder="Briefly describe your requirements..."
+                className="oneui-input text-base resize-none"
+                placeholder="Décrivez vos besoins ou objectifs..."
                 required
               />
             </div>
@@ -146,22 +140,16 @@ const Contact: React.FC = () => {
               type="submit"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.97 }}
-              className="oneui-btn-primary"
-              style={{
-                padding: "14px 28px", fontSize: "15px",
-                cursor: "pointer", border: "none",
-                display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px",
-                alignSelf: "flex-start",
-              }}
+              className="oneui-btn-primary px-7 py-3.5 text-sm sm:text-base cursor-pointer border-none inline-flex items-center justify-center gap-2 self-start w-full sm:w-auto"
             >
-              <span>Initiate Contact</span>
+              <span>Envoyer le Message</span>
               <Send size={16} />
             </motion.button>
           </motion.form>
         </div>
       </div>
 
-      <div className="mocha-divider" style={{ position: "absolute", bottom: 0, left: 0, right: 0 }} />
+      <div className="mocha-divider absolute bottom-0 left-0 right-0" />
     </section>
   );
 };

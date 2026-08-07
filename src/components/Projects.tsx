@@ -65,13 +65,9 @@ const Projects: React.FC = () => {
   return (
     <section
       id="projects"
-      style={{
-        padding: "120px 0",
-        background: "var(--mocha-base)",
-        position: "relative",
-      }}
+      className="py-16 sm:py-24 lg:py-32 bg-white relative"
     >
-      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 32px" }}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
         <motion.div
@@ -79,97 +75,54 @@ const Projects: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          style={{
-            display: "flex", flexDirection: "column", gap: "12px",
-            marginBottom: "72px",
-          }}
+          className="flex flex-col gap-3 mb-12 sm:mb-16"
         >
-          <div style={{
-            display: "inline-flex", alignItems: "center", gap: "8px",
-            background: "var(--mocha-s0)", border: "1px solid var(--mocha-s1)",
-            borderRadius: "var(--r-pill)", padding: "6px 16px",
-            alignSelf: "flex-start",
-          }}>
-            <span style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.15em", color: "var(--mocha-ov1)", textTransform: "uppercase" }}>
-              Featured Work
+          <div className="inline-flex items-center gap-2 bg-slate-100 border border-slate-200 rounded-full px-4 py-1.5 self-start">
+            <span className="text-xs font-bold tracking-widest text-slate-600 uppercase">
+              Projets Réalisés
             </span>
           </div>
-          <div style={{ display: "flex", flexDirection: "row", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: "16px" }}>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
-              <h2 style={{
-                fontSize: "clamp(36px, 5vw, 52px)", fontWeight: 900,
-                color: "var(--mocha-text)", letterSpacing: "-0.5px", lineHeight: 1.1,
-              }}>
-                Selected Projects
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+                Projets & Réalisations
               </h2>
-              <div style={{ width: "48px", height: "3px", background: "var(--mocha-sub1)", borderRadius: "var(--r-pill)", marginTop: "16px" }} />
+              <div className="w-12 h-1 bg-slate-900 rounded-full mt-3 sm:mt-4" />
             </div>
-            <p style={{ fontSize: "16px", color: "var(--mocha-ov1)", maxWidth: "380px", lineHeight: 1.7, fontWeight: 400 }}>
-              Selected projects demonstrating architecture, problem-solving, and full-stack capabilities.
+            <p className="text-sm sm:text-base text-slate-600 max-w-sm leading-relaxed font-normal">
+              Une sélection de projets illustrant mes compétences en architecture logicielle et développement full-stack.
             </p>
           </div>
         </motion.div>
 
         {/* Projects list */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+        <div className="flex flex-col gap-4 sm:gap-6">
           {projects.map((project, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.6, delay: index * 0.04 }}
-              className="oneui-card"
-              style={{
-                padding: "28px 32px",
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "flex-start",
-                gap: "32px",
-              }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: index * 0.04 }}
+              className="oneui-card p-5 sm:p-7 flex flex-col sm:flex-row items-start gap-4 sm:gap-8"
             >
               {/* Index number */}
-              <div style={{
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "12px", fontWeight: 600,
-                color: "var(--mocha-ov0)",
-                paddingTop: "4px",
-                minWidth: "28px",
-              }}>
+              <div className="font-mono text-xs font-semibold text-slate-400 sm:pt-1 min-w-[24px]">
                 {String(index + 1).padStart(2, "0")}
               </div>
 
               {/* Content */}
-              <div style={{ flex: 1 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "10px", flexWrap: "wrap" }}>
-                  <h3 style={{
-                    fontSize: "20px", fontWeight: 800,
-                    color: "var(--mocha-text)", letterSpacing: "-0.2px",
-                  }}>
+              <div className="flex-1 w-full">
+                <div className="flex items-center justify-between gap-3 mb-2 flex-wrap">
+                  <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight">
                     {project.title}
                   </h3>
-                  <div style={{ display: "flex", gap: "8px" }}>
+                  <div className="flex gap-2">
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      style={{
-                        display: "flex", alignItems: "center", justifyContent: "center",
-                        width: "32px", height: "32px",
-                        background: "var(--mocha-s0)", border: "1px solid var(--mocha-s1)",
-                        borderRadius: "var(--r-sm)",
-                        color: "var(--mocha-sub0)",
-                        transition: "color 0.2s ease, border-color 0.2s ease",
-                        textDecoration: "none",
-                      }}
-                      onMouseEnter={(e) => {
-                        (e.currentTarget as HTMLElement).style.color = "var(--mocha-text)";
-                        (e.currentTarget as HTMLElement).style.borderColor = "var(--mocha-s2)";
-                      }}
-                      onMouseLeave={(e) => {
-                        (e.currentTarget as HTMLElement).style.color = "var(--mocha-sub0)";
-                        (e.currentTarget as HTMLElement).style.borderColor = "var(--mocha-s1)";
-                      }}
+                      className="flex items-center justify-center w-8 h-8 bg-slate-100 border border-slate-200 rounded-lg text-slate-600 hover:text-slate-900 hover:border-slate-400 transition-all"
                     >
                       <Github size={15} />
                     </a>
@@ -178,23 +131,7 @@ const Projects: React.FC = () => {
                         href={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        style={{
-                          display: "flex", alignItems: "center", justifyContent: "center",
-                          width: "32px", height: "32px",
-                          background: "var(--mocha-s0)", border: "1px solid var(--mocha-s1)",
-                          borderRadius: "var(--r-sm)",
-                          color: "var(--mocha-sub0)",
-                          transition: "color 0.2s ease, border-color 0.2s ease",
-                          textDecoration: "none",
-                        }}
-                        onMouseEnter={(e) => {
-                          (e.currentTarget as HTMLElement).style.color = "var(--mocha-text)";
-                          (e.currentTarget as HTMLElement).style.borderColor = "var(--mocha-s2)";
-                        }}
-                        onMouseLeave={(e) => {
-                          (e.currentTarget as HTMLElement).style.color = "var(--mocha-sub0)";
-                          (e.currentTarget as HTMLElement).style.borderColor = "var(--mocha-s1)";
-                        }}
+                        className="flex items-center justify-center w-8 h-8 bg-slate-100 border border-slate-200 rounded-lg text-slate-600 hover:text-slate-900 hover:border-slate-400 transition-all"
                       >
                         <ExternalLink size={15} />
                       </a>
@@ -202,13 +139,13 @@ const Projects: React.FC = () => {
                   </div>
                 </div>
 
-                <p style={{ fontSize: "15px", color: "var(--mocha-ov1)", marginBottom: "16px", lineHeight: 1.65, fontWeight: 400 }}>
+                <p className="text-sm sm:text-base text-slate-600 mb-4 leading-relaxed font-normal">
                   {project.description}
                 </p>
 
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+                <div className="flex flex-wrap gap-2">
                   {project.tech.map((tech, idx) => (
-                    <span key={idx} className="oneui-pill">{tech}</span>
+                    <span key={idx} className="oneui-pill text-xs">{tech}</span>
                   ))}
                 </div>
               </div>

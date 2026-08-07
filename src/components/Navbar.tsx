@@ -1,9 +1,13 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Compass } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-scroll";
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  onOpenContact: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -14,128 +18,115 @@ const Navbar: React.FC = () => {
   }, []);
 
   const links = [
-    { name: "Home", href: "home" },
-    { name: "Skills", href: "skills" },
-    { name: "Projects", href: "projects" },
+    { name: "Accueil", href: "home" },
+    { name: "Compétences", href: "skills" },
+    { name: "Projets", href: "projects" },
     { name: "Contact", href: "contact" },
   ];
 
   return (
     <nav
-      style={{
-        position: "fixed", width: "100%", zIndex: 50,
-        background: scrolled ? "rgba(24,24,37,0.92)" : "rgba(30,30,46,0.7)",
-        backdropFilter: "blur(20px)",
-        borderBottom: `1px solid ${scrolled ? "rgba(69,71,90,0.8)" : "rgba(49,50,68,0.5)"}`,
-        transition: "all 0.3s ease",
-      }}
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+        scrolled
+          ? "bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs"
+          : "bg-white/80 backdrop-blur-sm border-b border-transparent"
+      }`}
     >
-      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "72px" }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 sm:h-20">
 
           {/* Logo */}
-          <Link to="home" smooth duration={500} style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: "12px", textDecoration: "none" }}>
-            <div style={{
-              background: "linear-gradient(135deg, #bac2de, #585b70)",
-              padding: "2px", borderRadius: "10px",
-            }}>
-              <div style={{
-                background: "var(--mocha-base)", borderRadius: "8px",
-                width: "36px", height: "36px",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                fontWeight: 900, fontSize: "15px", color: "var(--mocha-text)",
-                fontFamily: "'JetBrains Mono', monospace",
-              }}>D</div>
+          <Link
+            to="home"
+            smooth
+            duration={500}
+            className="cursor-pointer flex items-center gap-3 group"
+          >
+            <div className="bg-slate-900 p-0.5 rounded-xl shadow-xs">
+              <div className="bg-slate-900 rounded-lg w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center font-black text-sm sm:text-base text-white font-mono">
+                D
+              </div>
             </div>
-            <span style={{ fontWeight: 800, fontSize: "16px", color: "var(--mocha-text)", letterSpacing: "-0.3px" }}>
-              Derandrainy.
-            </span>
+            <div className="flex flex-col">
+              <span className="font-extrabold text-base sm:text-lg text-slate-900 leading-tight tracking-tight">
+                Derandrainy.
+              </span>
+              <span className="text-[9px] sm:text-[10px] font-bold text-slate-500 tracking-wider uppercase">
+                Développeur Full-Stack
+              </span>
+            </div>
           </Link>
 
-          {/* Desktop links */}
-          <div style={{ display: "flex", alignItems: "center", gap: "8px" }} className="hidden md:flex">
+          {/* Desktop Navigation Links & Modal CTA */}
+          <div className="hidden md:flex items-center gap-1 lg:gap-2">
             {links.map((link) => (
               <Link
                 key={link.name}
                 to={link.href}
-                smooth duration={500} offset={-80}
-                style={{
-                  fontSize: "14px", fontWeight: 600,
-                  color: "var(--mocha-sub0)",
-                  cursor: "pointer", padding: "8px 16px",
-                  borderRadius: "var(--r-pill)",
-                  transition: "color 0.2s ease, background 0.2s ease",
-                  textDecoration: "none",
-                }}
-                onMouseEnter={(e) => {
-                  (e.target as HTMLElement).style.color = "var(--mocha-text)";
-                  (e.target as HTMLElement).style.background = "var(--mocha-s0)";
-                }}
-                onMouseLeave={(e) => {
-                  (e.target as HTMLElement).style.color = "var(--mocha-sub0)";
-                  (e.target as HTMLElement).style.background = "transparent";
-                }}
+                smooth
+                duration={500}
+                offset={-80}
+                className="text-xs lg:text-sm font-semibold text-slate-600 hover:text-slate-900 px-3 lg:px-4 py-2 rounded-full hover:bg-slate-100 transition-all cursor-pointer"
               >
                 {link.name}
               </Link>
             ))}
+
+            <button
+              onClick={onOpenContact}
+              className="ml-2 px-4 py-2 lg:px-5 lg:py-2.5 bg-slate-900 text-white font-bold text-xs rounded-full hover:bg-slate-800 transition-all inline-flex items-center gap-1.5 cursor-pointer shadow-xs"
+            >
+              <Compass size={14} />
+              <span>Démarrer un Projet</span>
+            </button>
           </div>
 
-          {/* Mobile toggle */}
+          {/* Mobile Toggle Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden"
-            style={{
-              background: "var(--mocha-s0)", border: "1px solid var(--mocha-s1)",
-              borderRadius: "var(--r-sm)", padding: "8px",
-              color: "var(--mocha-sub1)", cursor: "pointer",
-              display: "flex", alignItems: "center", justifyContent: "center",
-            }}
+            aria-label="Toggle navigation menu"
+            className="md:hidden bg-slate-100 border border-slate-200 rounded-xl p-2 text-slate-900 hover:bg-slate-200 transition-colors cursor-pointer flex items-center justify-center"
           >
             {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile Dropdown Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            style={{
-              background: "var(--mocha-mantle)",
-              borderTop: "1px solid var(--mocha-s0)",
-              overflow: "hidden",
-            }}
-            className="md:hidden"
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="md:hidden bg-white border-t border-slate-200 overflow-hidden shadow-lg"
           >
-            <div style={{ padding: "16px 24px", display: "flex", flexDirection: "column", gap: "4px" }}>
+            <div className="px-4 py-4 flex flex-col gap-1.5">
               {links.map((link) => (
                 <Link
                   key={link.name}
-                  to={link.href} smooth duration={500} offset={-80}
+                  to={link.href}
+                  smooth
+                  duration={500}
+                  offset={-80}
                   onClick={() => setIsOpen(false)}
-                  style={{
-                    display: "block", padding: "12px 16px",
-                    color: "var(--mocha-sub1)", fontWeight: 600, fontSize: "15px",
-                    borderRadius: "var(--r-sm)", cursor: "pointer",
-                    transition: "background 0.15s ease, color 0.15s ease",
-                    textDecoration: "none",
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.target as HTMLElement).style.background = "var(--mocha-s0)";
-                    (e.target as HTMLElement).style.color = "var(--mocha-text)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.target as HTMLElement).style.background = "transparent";
-                    (e.target as HTMLElement).style.color = "var(--mocha-sub1)";
-                  }}
+                  className="block px-4 py-3 text-slate-700 hover:text-slate-900 font-semibold text-sm rounded-xl hover:bg-slate-100 transition-all cursor-pointer"
                 >
                   {link.name}
                 </Link>
               ))}
+
+              <button
+                onClick={() => {
+                  setIsOpen(false);
+                  onOpenContact();
+                }}
+                className="mt-2 w-full py-3 bg-slate-900 text-white font-bold text-sm rounded-xl flex items-center justify-center gap-2 cursor-pointer shadow-xs"
+              >
+                <Compass size={16} />
+                <span>Démarrer un Projet (Modal)</span>
+              </button>
             </div>
           </motion.div>
         )}

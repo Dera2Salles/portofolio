@@ -1,43 +1,39 @@
 import React from "react";
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  onOpenContact?: () => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
   return (
-    <footer style={{
-      background: "var(--mocha-crust)",
-      borderTop: "1px solid var(--mocha-s0)",
-      padding: "32px 0",
-    }}>
-      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 32px" }}>
-        <div style={{
-          display: "flex", flexDirection: "row",
-          justifyContent: "space-between", alignItems: "center",
-          flexWrap: "wrap", gap: "16px",
-        }}>
-          <div>
-            <p style={{ fontSize: "14px", fontWeight: 800, color: "var(--mocha-text)", letterSpacing: "0.05em" }}>
+    <footer className="bg-slate-900 text-white border-t border-slate-800 py-10">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="text-center md:text-left">
+            <p className="text-sm font-black tracking-wider text-white">
               DERANDRAINY MARIE MARTINOT DE SALLES
             </p>
-            <p style={{ fontSize: "12px", color: "var(--mocha-ov1)", marginTop: "2px", fontWeight: 500 }}>
-              Full Stack Developer
+            <p className="text-xs text-slate-400 mt-1 font-medium">
+              Ingénieur Software Full-Stack & Systems Freelance
             </p>
           </div>
 
-          <div style={{ textAlign: "center" }}>
-            <p style={{ fontSize: "12px", color: "var(--mocha-ov0)" }}>
-              © {new Date().getFullYear()} Portfolio. All rights reserved.
+          <div className="text-center">
+            <button
+              onClick={onOpenContact}
+              className="text-xs text-slate-300 hover:text-white underline underline-offset-4 cursor-pointer font-medium"
+            >
+              Planifier une Escale / Mission Freelance
+            </button>
+            <p className="text-[11px] text-slate-500 mt-1">
+              © {new Date().getFullYear()} Dera. All rights reserved.
             </p>
           </div>
 
           <div>
             <a
               href="mailto:dera.ah.14@gmail.com"
-              style={{
-                fontSize: "13px", fontWeight: 600,
-                color: "var(--mocha-sub1)", textDecoration: "none",
-                transition: "color 0.2s ease",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--mocha-text)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--mocha-sub1)")}
+              className="text-xs font-semibold text-slate-300 hover:text-white transition-colors"
             >
               dera.ah.14@gmail.com
             </a>
