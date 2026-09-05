@@ -1,167 +1,393 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&family=Kalam:wght@300;400;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* ==========================================================================
+   Design tokens
+   Light editorial system: one vivid green accent, hairline structure,
+   no gradients, no radii. Contrast is carried by ink weight, not by boxes.
+   ========================================================================== */
 :root {
-  --mocha-base:    #FFFFFF;
-  --mocha-mantle:  #F8FAFC;
-  --mocha-crust:   #F1F5F9;
-  --mocha-s0:      #E2E8F0;
-  --mocha-s1:      #CBD5E1;
-  --mocha-s2:      #94A3B8;
-  --mocha-ov0:     #64748B;
-  --mocha-ov1:     #475569;
-  --mocha-text:    #0F172A;
-  --mocha-sub0:    #334155;
-  --mocha-sub1:    #1E293B;
+  /* Surfaces */
+  --bg:          #FFFFFF;
+  --bg-soft:     #F6F8F7;
+  --bg-sunk:     #EDF1EF;
 
-  --r-xs:   6px;
-  --r-sm:   10px;
-  --r-md:   14px;
-  --r-lg:   20px;
-  --r-xl:   24px;
-  --r-pill: 9999px;
-  --radius: 1rem;
-}
+  /* Ink scale */
+  --ink:         #0B0F0D;
+  --ink-2:       #414B47;
+  --ink-3:       #6D7873;
+  --ink-4:       #98A29D;
 
-@layer base {
-  * {
-    font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-    background-color: #FFFFFF;
-    color: #0F172A;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 800;
-  }
-  .font-mono, code, pre {
-    font-family: 'JetBrains Mono', monospace;
-  }
-  .text-stroke-white { -webkit-text-stroke: 2px #0F172A; }
+  /* Structure */
+  --line:        #E3E7E5;
+  --line-2:      #EFF2F0;
+  --line-strong: #C9D1CD;
+
+  /* Accent — vivid green, used as a signal, never as decoration */
+  --accent:      #00C46A;
+  --accent-hi:   #00D877;
+  --accent-ink:  #00734A;  /* AA on white: 5.9:1 */
+  --accent-soft: #E8F9F1;
+
+  /* Type */
+  --font-display: 'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  /* Motion */
+  --ease:      cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast:  180ms;
+  --dur:       280ms;
+
+  --radius: 0;
 }
 
-*::-webkit-scrollbar { width: 8px; height: 8px; }
-*::-webkit-scrollbar-track { background: #F1F5F9; border-radius: var(--r-pill); }
-*::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
-  border-radius: var(--r-pill);
-  border: 2px solid #F1F5F9;
-  background-clip: padding-box;
-}
-*::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
-html { scrollbar-width: thin; scrollbar-color: #CBD5E1 #F1F5F9; }
-
-.oneui-card {
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  border-radius: var(--r-lg);
-  transition: all 0.2s ease;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-}
-.oneui-card:hover {
-  border-color: #0F172A;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
-}
-
-.oneui-pill {
-  display: inline-flex; align-items: center;
-  padding: 6px 14px; border-radius: var(--r-pill);
-  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.02em;
-  background: #F1F5F9; color: #334155;
-  border: 1px solid #E2E8F0;
-  transition: all 0.2s ease;
-}
-.oneui-pill:hover {
-  background: #0F172A;
-  color: #FFFFFF;
-  border-color: #0F172A;
-}
-
-.oneui-btn-primary {
-  background: #0F172A;
-  color: #FFFFFF;
-  border-radius: var(--r-pill); font-weight: 700;
-  transition: all 0.2s ease;
-}
-.oneui-btn-primary:hover {
-  background: #334155;
-  transform: translateY(-1px);
-}
-
-.oneui-btn-ghost {
-  background: #FFFFFF; color: #0F172A;
-  border: 1px solid #E2E8F0; border-radius: var(--r-pill); font-weight: 700;
-  transition: all 0.2s ease;
-}
-.oneui-btn-ghost:hover {
-  border-color: #0F172A;
-  background: #F8FAFC;
-}
-
-.oneui-input {
-  width: 100%; background: transparent; border: none;
-  border-bottom: 2px solid #E2E8F0;
-  padding: 8px 0; color: #0F172A;
-  font-family: 'Nunito', sans-serif; font-size: 1.1rem; outline: none;
-  transition: border-color 0.2s ease;
-}
-.oneui-input::placeholder { color: #94A3B8; }
-.oneui-input:focus { border-bottom-color: #0F172A; }
-
-.oneui-label {
-  display: block; font-size: 0.7rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.12em;
-  color: #64748B; margin-bottom: 6px;
-}
-
-.mocha-divider {
-  height: 1px;
-  background: #E2E8F0;
-}
-
+/* Tailwind v4 theme bridge — keeps bg-background / border-border etc. working */
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
+  --color-background:          var(--bg);
+  --color-foreground:          var(--ink);
+  --color-card:                var(--bg);
+  --color-card-foreground:     var(--ink);
+  --color-primary:             var(--ink);
+  --color-primary-foreground:  var(--bg);
+  --color-secondary:           var(--bg-soft);
+  --color-secondary-foreground:var(--ink);
+  --color-muted:               var(--bg-soft);
+  --color-muted-foreground:    var(--ink-3);
+  --color-accent:              var(--accent);
+  --color-accent-foreground:   var(--ink);
+  --color-destructive:         #E11D48;
+  --color-border:              var(--line);
+  --color-input:               var(--line);
+  --color-ring:                var(--accent);
+
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
 }
 
-:root {
-  --background: #FFFFFF;
-  --foreground: #0F172A;
-  --card: #FFFFFF;
-  --card-foreground: #0F172A;
-  --primary: #0F172A;
-  --primary-foreground: #FFFFFF;
-  --secondary: #F1F5F9;
-  --secondary-foreground: #0F172A;
-  --muted: #F8FAFC;
-  --muted-foreground: #64748B;
-  --accent: #E2E8F0;
-  --accent-foreground: #0F172A;
-  --destructive: #EF4444;
-  --border: #E2E8F0;
-  --input: #E2E8F0;
-  --ring: #0F172A;
+/* ==========================================================================
+   Base
+   ========================================================================== */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-radius: 0; /* sharp by default; utilities can still opt out */
+    border-color: var(--line);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line-strong) transparent;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.6;
+    font-feature-settings: "cv05" 1, "ss01" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+    color: var(--ink);
+  }
+
+  code, pre, .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent-ink);
+    outline-offset: 3px;
+  }
+
+  img { display: block; max-width: 100%; }
+}
+
+/* The viewport itself never scrolls: App.tsx swaps full-screen panels.
+   Each panel owns its own scroll when its content is taller than the screen. */
+html,
+body,
+#root {
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+/* ==========================================================================
+   Scrollbar
+   ========================================================================== */
+*::-webkit-scrollbar { width: 6px; height: 6px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb { background: var(--line-strong); }
+*::-webkit-scrollbar-thumb:hover { background: var(--ink-4); }
+
+/* ==========================================================================
+   Components
+   ========================================================================== */
+@layer components {
+
+  /* --- Layout ------------------------------------------------------------ */
+  .shell {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: clamp(1.5rem, 5vw, 6rem);
+  }
+
+  .step-section {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--bg);
+    /* room for the fixed header and the bottom progress rail */
+    padding-block: clamp(7rem, 14vh, 11rem) clamp(5rem, 10vh, 8rem);
+  }
+
+  /* --- Eyebrow ----------------------------------------------------------- */
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+  }
+  .eyebrow-num {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--accent-ink);
+  }
+  .eyebrow-rule {
+    height: 1px;
+    width: 2rem;
+    background: var(--line-strong);
+    flex: none;
+  }
+  .eyebrow-label {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--ink-3);
+  }
+
+  /* --- Typography -------------------------------------------------------- */
+  .display {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.032em;
+    line-height: 1.04;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  .lede {
+    color: var(--ink-2);
+    line-height: 1.75;
+    text-wrap: pretty;
+  }
+  .kicker {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--ink-4);
+  }
+
+  /* --- Card -------------------------------------------------------------- */
+  .card {
+    position: relative;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    transition:
+      border-color var(--dur) var(--ease),
+      transform var(--dur) var(--ease),
+      box-shadow var(--dur) var(--ease);
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: -1px auto -1px -1px;
+    width: 2px;
+    background: var(--accent);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform var(--dur) var(--ease);
+  }
+  .card:hover {
+    border-color: var(--line-strong);
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px -28px rgba(11, 15, 13, 0.35);
+  }
+  .card:hover::before { transform: scaleY(1); }
+
+  .card-invert {
+    background: var(--ink);
+    border-color: var(--ink);
+  }
+  .card-invert:hover { border-color: var(--ink); }
+
+  /* --- Tags -------------------------------------------------------------- */
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    height: 1.875rem;
+    padding-inline: 0.75rem;
+    border: 1px solid var(--line);
+    background: var(--bg-soft);
+    color: var(--ink-2);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    transition:
+      border-color var(--dur-fast) var(--ease),
+      background-color var(--dur-fast) var(--ease),
+      color var(--dur-fast) var(--ease);
+  }
+  .tag:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+  }
+
+  .tag-dashed {
+    display: inline-flex;
+    align-items: center;
+    height: 1.875rem;
+    padding-inline: 0.75rem;
+    border: 1px dashed var(--line-strong);
+    background: transparent;
+    color: var(--ink-3);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    transition: border-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+  }
+  .tag-dashed:hover { border-color: var(--accent); color: var(--accent-ink); }
+
+  /* --- Buttons ----------------------------------------------------------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    height: 3rem;
+    padding-inline: 1.5rem;
+    border: 1px solid transparent;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:
+      background-color var(--dur-fast) var(--ease),
+      border-color var(--dur-fast) var(--ease),
+      color var(--dur-fast) var(--ease),
+      transform var(--dur-fast) var(--ease);
+  }
+  .btn svg { transition: transform var(--dur) var(--ease); }
+  .btn:hover svg { transform: translateX(4px); }
+  .btn:active { transform: translateY(1px); }
+
+  .btn-accent { background: var(--accent); color: var(--ink); }
+  .btn-accent:hover { background: var(--accent-hi); }
+
+  .btn-ghost {
+    background: var(--bg);
+    color: var(--ink);
+    border-color: var(--line-strong);
+  }
+  .btn-ghost:hover { border-color: var(--ink); background: var(--bg-soft); }
+
+  .btn-sm { height: 2.375rem; padding-inline: 1rem; font-size: 0.6875rem; }
+
+  /* --- Links ------------------------------------------------------------- */
+  .link {
+    position: relative;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -3px;
+    height: 1px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform var(--dur) var(--ease);
+  }
+  .link:hover::after { transform: scaleX(1); transform-origin: left; }
+
+  /* --- Misc -------------------------------------------------------------- */
+  .hairline { height: 1px; background: var(--line); }
+
+  .marker {
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    flex: none;
+  }
+
+  .status-dot {
+    position: relative;
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    flex: none;
+  }
+  .status-dot::after {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border: 1px solid var(--accent);
+    opacity: 0;
+    animation: pulse-square 2.6s var(--ease) infinite;
+  }
+
+  @keyframes pulse-square {
+    0%   { opacity: 0.9; transform: scale(0.7); }
+    70%  { opacity: 0;   transform: scale(1.6); }
+    100% { opacity: 0;   transform: scale(1.6); }
+  }
+}
+
+/* ==========================================================================
+   Reduced motion
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .card:hover { transform: none; }
 }
