@@ -5,34 +5,40 @@ import { rise } from "../lib/motion";
 
 const methods = [
   {
-    kind: "Méthode",
-    name: "Merise",
-    desc: "Modélisation du système d'information, de l'analyse des besoins jusqu'au schéma physique de la base de données.",
-    items: ["MCD", "MLD", "MPD"],
+    kind: "Analyse",
+    name: "Besoins & User Stories",
+    desc: "Définition claire des attentes avec le client. Traduction des besoins en User Stories pour s'assurer que chaque fonctionnalité apporte de la valeur.",
+    items: ["Ateliers", "Backlog", "User Stories"],
   },
   {
-    kind: "Notation",
-    name: "UML",
-    desc: "Modélisation orientée objet pour une vision claire du système, partagée avec toute l'équipe.",
-    items: ["Cas d'utilisation", "Classes", "Séquences"],
+    kind: "Développement",
+    name: "Livraison Itérative",
+    desc: "Développement par petits cycles (sprints). Livraisons régulières permettant d'ajuster le produit rapidement et de valider les hypothèses.",
+    items: ["Agile", "Sprints", "CI/CD"],
+  },
+  {
+    kind: "Suivi",
+    name: "Communication",
+    desc: "Points réguliers avec les utilisateurs et clients. Transparence sur l'avancement et feedbacks fréquents pour rester aligné sur les objectifs.",
+    items: ["Feedbacks", "Démos", "Transparence"],
   },
 ];
 
 const StepDesign: React.FC = () => {
   return (
     <Step
-      id="conception"
+      id="approche"
       number="05"
-      label="Conception"
+      label="Approche"
       title={
         <>
-          Concevoir avant de coder
+          Méthode de travail
           <span className="text-[var(--accent)]">.</span>
         </>
       }
-      lede="Une application fiable commence par une modélisation claire. J'utilise les méthodes de conception éprouvées pour structurer le système d'information et l'architecture avant d'écrire la première ligne."
+      lede="Mon processus de développement est centré sur l'utilisateur : de l'analyse initiale jusqu'à la livraison continue."
     >
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {methods.map((m) => (
           <motion.article key={m.name} variants={rise} className="card flex flex-col p-7 sm:p-8">
             <div className="flex items-center gap-3">
@@ -40,7 +46,7 @@ const StepDesign: React.FC = () => {
               <span className="h-px flex-1 bg-[var(--line)]" />
             </div>
 
-            <h3 className="display mt-6 text-3xl">{m.name}</h3>
+            <h3 className="display mt-6 text-2xl">{m.name}</h3>
 
             <p className="lede mt-4 mb-8 text-sm">{m.desc}</p>
 

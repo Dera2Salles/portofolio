@@ -22,29 +22,29 @@ interface Project {
 const projects: Project[] = [
   {
     year: "2025",
-    name: "Projet phare",
+    name: "ASJA WEBSITE",
     role: "Conception · Architecture · Développement",
     description:
-      "Deux à trois phrases : le problème résolu, ce que tu as construit, les décisions d'architecture qui comptent, et le résultat mesurable (utilisateurs, temps de réponse, volume traité).",
-    stack: ["React", "NestJS", "PostgreSQL", "Docker"],
+      "Site vitrine et plateforme complète incluant un système CMS sur-mesure, ainsi qu'un module de gestion des étudiants avec prise en charge des inscriptions en ligne.",
+    stack: ["Laravel", "PostgreSQL", "Tailwind CSS"],
+    href: "https://asjaweb.com/",
+  },
+  {
+    year: "2024",
+    name: "Kajy",
+    role: "Développeur / Architecte",
+    description:
+      "Une solution de stockage cloud performante et sécurisée conçue spécifiquement pour répondre aux besoins locaux à Madagascar.",
+    stack: ["Rust", "PostgreSQL", "AWS"],
     href: "",
   },
   {
     year: "2024",
-    name: "Deuxième projet",
-    role: "Développeur back-end",
+    name: "C-Tools",
+    role: "Développeur C",
     description:
-      "Une à deux phrases décrivant le périmètre, ton rôle exact et l'impact concret.",
-    stack: ["Django", "PostgreSQL"],
-    href: "",
-  },
-  {
-    year: "2024",
-    name: "Troisième projet",
-    role: "Développeur mobile",
-    description:
-      "Une à deux phrases décrivant le périmètre, ton rôle exact et l'impact concret.",
-    stack: ["Flutter", "MongoDB"],
+      "Un ensemble d'outils système en ligne de commande développés en C, axés sur la performance et la gestion de la mémoire.",
+    stack: ["C"],
     href: "",
   },
 ];
@@ -74,7 +74,20 @@ const StepProjects: React.FC = () => {
           <span className="text-[var(--accent)]">.</span>
         </>
       }
-      lede="Une sélection de réalisations, choisies pour ce qu'elles disent des décisions techniques prises plutôt que pour leur nombre."
+      lede={
+        <>
+          Voici mes trois projets phares. Pour découvrir le reste de mes réalisations, n'hésitez pas à visiter mon{" "}
+          <a
+            href="https://github.com/Dera2Salles"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="font-medium underline decoration-1 underline-offset-4 transition-colors hover:text-[var(--accent)]"
+          >
+            compte GitHub
+          </a>
+          .
+        </>
+      }
     >
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         {projects.map((p, i) => {

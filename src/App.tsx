@@ -21,7 +21,7 @@ const steps = [
   { id: "competences", label: "Compétences", Component: StepLearn },
   { id: "projets", label: "Projets", Component: StepProjects },
   { id: "experiences", label: "Expériences", Component: StepExperience },
-  { id: "conception", label: "Conception", Component: StepDesign },
+  { id: "approche", label: "Approche", Component: StepDesign },
   { id: "architecture", label: "Architecture", Component: StepArchitecture },
   { id: "system-design", label: "System Design", Component: StepSystem },
   { id: "contact", label: "Contact", Component: StepContact },
@@ -95,56 +95,6 @@ const App: React.FC = () => {
   );
 
   useEffect(() => {
-    const handleWheel = (e: WheelEvent) => {
-      if (isLocked.current) {
-        e.preventDefault();
-        return;
-      }
-      if (Math.abs(e.deltaY) < WHEEL_THRESHOLD) return;
-
-      const panel = panelRef.current;
-      if (!panel) return;
-
-      const goingDown = e.deltaY > 0;
-      const atTop = panel.scrollTop <= EDGE_TOLERANCE;
-      const atBottom =
-        panel.scrollTop + panel.clientHeight >=
-        panel.scrollHeight - EDGE_TOLERANCE;
-
-      if (goingDown && atBottom && activeRef.current < steps.length - 1) {
-        e.preventDefault();
-        navigate(activeRef.current + 1);
-      } else if (!goingDown && atTop && activeRef.current > 0) {
-        e.preventDefault();
-        navigate(activeRef.current - 1);
-      }
-      // otherwise: let the panel scroll natively inside its own content
-    };
-
-    const handleTouchStart = (e: TouchEvent) => {
-      touchStartY.current = e.touches[0].clientY;
-    };
-
-    const handleTouchEnd = (e: TouchEvent) => {
-      if (isLocked.current) return;
-      const panel = panelRef.current;
-      if (!panel) return;
-
-      const delta = touchStartY.current - e.changedTouches[0].clientY;
-      if (Math.abs(delta) < SWIPE_THRESHOLD) return;
-
-      const atTop = panel.scrollTop <= EDGE_TOLERANCE;
-      const atBottom =
-        panel.scrollTop + panel.clientHeight >=
-        panel.scrollHeight - EDGE_TOLERANCE;
-
-      if (delta > 0 && atBottom && activeRef.current < steps.length - 1) {
-        navigate(activeRef.current + 1);
-      } else if (delta < 0 && atTop && activeRef.current > 0) {
-        navigate(activeRef.current - 1);
-      }
-    };
-
     const handleKeyDown = (e: KeyboardEvent) => {
       const target = e.target as HTMLElement | null;
       if (target && ["INPUT", "TEXTAREA"].includes(target.tagName)) return;
@@ -165,15 +115,9 @@ const App: React.FC = () => {
       }
     };
 
-    window.addEventListener("wheel", handleWheel, { passive: false });
-    window.addEventListener("touchstart", handleTouchStart, { passive: true });
-    window.addEventListener("touchend", handleTouchEnd, { passive: true });
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      window.removeEventListener("wheel", handleWheel);
-      window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchend", handleTouchEnd);
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [navigate]);
@@ -292,18 +236,18 @@ const App: React.FC = () => {
             </span>
             <span className="hidden h-px w-8 bg-[var(--line-strong)] lg:block" />
             <span className="kicker hidden lg:block">
-              Flèches ou molette pour naviguer
+              Flèches ou boutons pour naviguer
             </span>
           </div>
 
-          {/* --------------------------------------- mobile prev / next pager */}
-          <div className="fixed bottom-5 right-5 z-40 flex items-center gap-2 md:hidden">
+          {/* --------------------------------------- prev / next pager */}
+          <div className="fixed bottom-5 right-5 z-40 flex items-center gap-2 md:bottom-8 lg:right-12">
             <button
               type="button"
               onClick={() => navigate(active - 1)}
               disabled={active === 0}
               aria-label="Section précédente"
-              className="flex h-11 w-11 items-center justify-center border border-[var(--line-strong)] bg-white text-[var(--ink)] transition-colors duration-200 disabled:opacity-30 active:bg-[var(--bg-soft)]"
+              className="flex h-11 w-11 items-center justify-center border border-[var(--line-strong)] bg-white text-[var(--ink)] transition-colors duration-200 disabled:opacity-30 active:bg-[var(--bg-soft)] md:h-12 md:w-12 hover:bg-[var(--bg-soft)]"
             >
               <Chevron up />
             </button>
@@ -312,7 +256,7 @@ const App: React.FC = () => {
               onClick={() => navigate(active + 1)}
               disabled={active === steps.length - 1}
               aria-label="Section suivante"
-              className="flex h-11 w-11 items-center justify-center border border-[var(--accent)] bg-[var(--accent)] text-[var(--ink)] transition-colors duration-200 disabled:border-[var(--line-strong)] disabled:bg-white disabled:opacity-30"
+              className="flex h-11 w-11 items-center justify-center border border-[var(--accent)] bg-[var(--accent)] text-[var(--ink)] transition-colors duration-200 disabled:border-[var(--line-strong)] disabled:bg-white disabled:opacity-30 md:h-12 md:w-12 hover:opacity-80"
             >
               <Chevron />
             </button>
