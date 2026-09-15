@@ -21,28 +21,28 @@ interface Experience {
 const experiences: Experience[] = [
   {
     period: "2025 — Aujourd'hui",
-    role: "Intitulé du poste",
-    org: "Entreprise ou client",
+    role: "Développeur Full Stack",
+    org: "Indépendant / Freelance",
     description:
-      "Ce dont tu es responsable, les systèmes sur lesquels tu interviens, et un résultat concret que tu peux défendre en entretien.",
-    stack: ["TypeScript", "NestJS", "PostgreSQL"],
+      "Création de solutions web modernes et scalables. Accompagnement technique de bout en bout, de l'architecture logicielle jusqu'au déploiement en production.",
+    stack: ["React", "Node.js", "Laravel", "PostgreSQL"],
     current: true,
   },
   {
     period: "2024 — 2025",
-    role: "Intitulé du poste",
-    org: "Entreprise ou client",
+    role: "Développeur Full Stack",
+    org: "Ariel Hébergement (Startup)",
     description:
-      "Ce dont tu étais responsable, et ce que ton passage a changé pour l'équipe ou le produit.",
-    stack: ["React", "Django"],
+      "Participation au développement et à la maintenance des plateformes pour cette startup, optimisation des performances et déploiement de nouvelles fonctionnalités.",
+    stack: ["PHP", "JavaScript", "Linux", "Docker"],
   },
   {
     period: "2023 — 2024",
-    role: "Formation ou première expérience",
-    org: "École, université ou premier client",
+    role: "Développeur Web",
+    org: "Université",
     description:
-      "Le socle : conception, algorithmique, premiers projets livrés.",
-    stack: ["C", "Python"],
+      "Développement d'outils numériques pour l'administration et les étudiants, incluant la conception de la plateforme de gestion et du site web principal.",
+    stack: ["Laravel", "MySQL", "Tailwind CSS"],
   },
 ];
 
