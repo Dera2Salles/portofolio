@@ -27,10 +27,6 @@ const steps = [
   { id: "contact", label: "Contact", Component: StepContact },
 ];
 
-// Distance (px) a wheel tick / swipe must cover before it's treated as intent.
-const WHEEL_THRESHOLD = 12;
-const SWIPE_THRESHOLD = 56;
-const EDGE_TOLERANCE = 2;
 
 /** Aligns fixed chrome with the .shell content column. */
 const GUTTER = "clamp(1.5rem, 5vw, 6rem)";
@@ -60,7 +56,6 @@ const App: React.FC = () => {
   const activeRef = useRef(active);
   const panelRef = useRef<HTMLDivElement | null>(null);
   const isLocked = useRef(false);
-  const touchStartY = useRef(0);
   const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
